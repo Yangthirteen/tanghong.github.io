@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="https://baijiahao.baidu.com/s?id=1613047743708688271&amp;amp;wfr=spider&amp;amp;for=pc">
+<meta name="description" content="一、基本原理1.ashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。2.HashMap数组每一个元素的初始值都是Null。3.对于HashMap，我们最常使用的是两个方法：Get 和 Put。4.新来的Entry节点插入链表时，使用的是“头插法”。是因为HashMap的发明者认为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="熊灿博---帅">
-<meta property="og:url" content="http://yoursite.com/2019/05/30/test/index.html">
+<meta property="og:title" content="关于HashMap的知识">
+<meta property="og:url" content="http://yoursite.com/2019/07/17/关于HashMap的知识/index.html">
 <meta property="og:site_name" content="Blog for 汤洪">
-<meta property="og:description" content="https://baijiahao.baidu.com/s?id=1613047743708688271&amp;amp;wfr=spider&amp;amp;for=pc">
+<meta property="og:description" content="一、基本原理1.ashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。2.HashMap数组每一个元素的初始值都是Null。3.对于HashMap，我们最常使用的是两个方法：Get 和 Put。4.新来的Entry节点插入链表时，使用的是“头插法”。是因为HashMap的发明者认为">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-20T16:35:08.639Z">
+<meta property="og:updated_time" content="2019-07-18T03:18:17.709Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="熊灿博---帅">
-<meta name="twitter:description" content="https://baijiahao.baidu.com/s?id=1613047743708688271&amp;amp;wfr=spider&amp;amp;for=pc">
+<meta name="twitter:title" content="关于HashMap的知识">
+<meta name="twitter:description" content="一、基本原理1.ashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。2.HashMap数组每一个元素的初始值都是Null。3.对于HashMap，我们最常使用的是两个方法：Get 和 Put。4.新来的Entry节点插入链表时，使用的是“头插法”。是因为HashMap的发明者认为">
 
 
 
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/30/test/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/17/关于HashMap的知识/">
 
 
 
@@ -130,7 +130,7 @@
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
 
 
-  <title>熊灿博---帅 | Blog for 汤洪</title>
+  <title>关于HashMap的知识 | Blog for 汤洪</title>
   
 
 
@@ -237,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/30/test/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/17/关于HashMap的知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tanghong">
@@ -254,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">熊灿博---帅</h1>
+          <h1 class="post-title" itemprop="name headline">关于HashMap的知识</h1>
         
 
         <div class="post-meta">
@@ -266,8 +266,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-30T11:58:25+08:00">
-                2019-05-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-17T19:48:09+08:00">
+                2019-07-17
               </time>
             
 
@@ -304,7 +304,30 @@
       
 
       
-        <p><a href="https://baijiahao.baidu.com/s?id=1613047743708688271&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1613047743708688271&amp;wfr=spider&amp;for=pc</a></p>
+        <p>一、基本原理<br>1.ashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。<br>2.HashMap数组每一个元素的初始值都是Null。<br>3.对于HashMap，我们最常使用的是两个方法：Get 和 Put。<br>4.新来的Entry节点插入链表时，使用的是“头插法”。是因为HashMap的发明者认为，后插入的Entry被查找的可能性更大。<br>5.HashMap的默认初始长度是16，并且每次自动拓展或者是手动初始化时，长度必须是2的幂。<br>(1)之所以选择16，是为了从key到index的Hash算法<br>(2)公式index = HashCode（Key） &amp; （Length - 1）<br>(3)length-1的二进制全部是1111，做与运算，Hash算法最终得到的index结果，完全取决于Key的Hashcode值的最后几位。只要输入的HashCode本身分布均匀，Hash算法的结果就是均匀的</p>
+<p>二、高并发下的HashMap<br>1.ReHash：在HashMap进行扩容时的一个步骤。<br>2.原因：HashMap的容量是有限的。当经过多次元素插入，使得HashMap达到一定饱和度时，Key映射位置发生冲突的几率会逐渐提高。这时候，HashMap需要扩展它的长度，也就是进行Resize。<br>3.衡量HashMap是否进行Resize的条件如下：HashMap.Size &gt;= Capacity * LoadFactor<br>4.ReHash的Java代码如下：<br>/**</p>
+<ul>
+<li>Transfers all entries from current table to newTable.</li>
+<li>/
+void transfer(Entry[] newTable, boolean rehash) {<br>  // 新 table 的容量<br>  int newCapacity = newTable.length;<br>  // 将原 table 中数据迭代输出<br>  for (Entry&lt;K,V&gt; e : table) {<pre><code>  while(null != e) {
+          //用于记住当前e的next节点
+          Entry&lt;K,V&gt; next = e.next;
+          if (rehash) {
+              //若e.key==null则e.hash=0否则=hash.(e.key)
+              e.hash = null == e.key ? 0 : hash(e.key);
+          }
+          // 重新计算索引了
+          int i = indexFor(e.hash, newCapacity);
+          e.next = newTable[i];
+          newTable[i] = e;
+          //轮换下一节点
+          e = next;
+      }
+}</code></pre>}</li>
+</ul>
+<p>5.4中的indexFor函数<br>static int indexFor(int h, int length) {<br>        // assert Integer.bitCount(length) == 1 : “length must be a non-zero power of 2”;<br>        //hash 值与 数组的长度-1进行位运算，长度必须是2的幂。<br>        return h &amp; (length-1);<br>    }</p>
+<p>6.高并发下的问题，由于其他线程的影响，ReHash会出现表环！<br>7.解决办法在高并发场景下，通常常采用另一个集合类ConcurrentHashMap。这个集合类兼顾了线程安全和性能。</p>
+<p>参考资料：<br><a href="https://zhuanlan.zhihu.com/p/31610616" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31610616</a><br><a href="https://zhuanlan.zhihu.com/p/31614195" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31614195</a></p>
 
       
     </div>
@@ -329,8 +352,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/30/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/07/11/Git操作学习/" rel="next" title="Git操作学习">
+                <i class="fa fa-chevron-left"></i> Git操作学习
               </a>
             
           </div>
@@ -338,10 +361,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/31/1/" rel="prev" title="软件架构学习记录">
-                软件架构学习记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -409,7 +428,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
