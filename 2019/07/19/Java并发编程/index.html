@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="一、并发编程的一些辅助类1.CountDownLatch(1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值(3)主要方法：public void await() throws InterruptedExce">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/05/30/hello-world/index.html">
+<meta property="og:title" content="Java并发编程">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/Java并发编程/index.html">
 <meta property="og:site_name" content="Blog for 汤洪">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="一、并发编程的一些辅助类1.CountDownLatch(1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值(3)主要方法：public void await() throws InterruptedExce">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-30T03:54:54.150Z">
+<meta property="og:updated_time" content="2019-07-19T09:01:19.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Java并发编程">
+<meta name="twitter:description" content="一、并发编程的一些辅助类1.CountDownLatch(1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值(3)主要方法：public void await() throws InterruptedExce">
 
 
 
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/30/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/19/Java并发编程/">
 
 
 
@@ -130,7 +130,7 @@
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
 
 
-  <title>Hello World | Blog for 汤洪</title>
+  <title>Java并发编程 | Blog for 汤洪</title>
   
 
 
@@ -237,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/30/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/Java并发编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tanghong">
@@ -254,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Java并发编程</h1>
         
 
         <div class="post-meta">
@@ -266,8 +266,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-30T11:54:54+08:00">
-                2019-05-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-19T16:17:47+08:00">
+                2019-07-19
               </time>
             
 
@@ -304,19 +304,17 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>一、并发编程的一些辅助类<br>1.CountDownLatch<br>(1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。<br>(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值<br>(3)主要方法：<br>public void await() throws InterruptedException { };   //调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行<br>public boolean await(long timeout, TimeUnit unit) throws InterruptedException { };  //和await()类似，只不过等待一定的时间后count值还没变为0的话就会继续执行<br>public void countDown() { };  //将count值减1</p>
+<p>2.CyclicBarrier<br>(1)功能：CyclicBarrier类位于java.util.concurrent包下，字面意思回环栅栏，通过它可以实现让一组线程等待至某个状态之后再全部同时执行。叫做回环是因为当所有等待线程都被释放以后，CyclicBarrier可以被重用。我们暂且把这个状态就叫做barrier，当调用await()方法之后，线程就处于barrier了。<br>(2)构造函数：<br>public CyclicBarrier(int parties, Runnable barrierAction) {}<br>public CyclicBarrier(int parties) {}<br>(3)主要方法：<br>public int await() throws InterruptedException, BrokenBarrierException { };<br>public int await(long timeout, TimeUnit unit)throws InterruptedException,BrokenBarrierException,TimeoutException { };<br>第一个版本比较常用，用来挂起当前线程，直至所有线程都到达barrier状态再同时执行后续任务；<br>第二个版本是让这些线程等待至一定的时间，如果还有线程没有到达barrier状态就直接让到达barrier的线程执行后续任务。</p>
+<p>3.Semaphore<br>(1)功能：Semaphore类位于java.util.concurrent包下，Semaphore翻译成字面意思为 信号量，Semaphore可以控同时访问的线程个数，通过 acquire() 获取一个许可，如果没有就等待，而 release() 释放一个许可。<br>(2)构造函数：<br>public Semaphore(int permits) {          //参数permits表示许可数目，即同时可以允许多少线程进行访问<br>    sync = new NonfairSync(permits);<br>}
+public Semaphore(int permits, boolean fair) {    //这个多了一个参数fair表示是否是公平的，即等待时间越久的越先获取许可<br>    sync = (fair)? new FairSync(permits) : new NonfairSync(permits);<br>}
+(3)主要方法：<br>public void acquire() throws InterruptedException {  }     //获取一个许可<br>public void acquire(int permits) throws InterruptedException { }    //获取permits个许可<br>public void release() { }          //释放一个许可<br>public void release(int permits) { }    //释放permits个许可</p>
+<p>acquire()用来获取一个许可，若无许可能够获得，则会一直等待，直到获得许可。<br>release()用来释放许可。注意，在释放许可之前，必须先获获得许可。</p>
+<p>这4个方法都会被阻塞，如果想立即得到执行结果，可以使用下面几个方法<br>public boolean tryAcquire() { };    //尝试获取一个许可，若获取成功，则立即返回true，若获取失败，则立即返回false<br>public boolean tryAcquire(long timeout, TimeUnit unit) throws InterruptedException { };  //尝试获取一个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false<br>public boolean tryAcquire(int permits) { }; //尝试获取permits个许可，若获取成功，则立即返回true，若获取失败，则立即返回false<br>public boolean tryAcquire(int permits, long timeout, TimeUnit unit) throws InterruptedException { }; //尝试获取permits个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false</p>
+<p>availablePermits()//得到可用的许可数目</p>
+<p>四、总结<br>1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同：<br>CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；<br>而CyclicBarrier一般用于一组线程互相等待至某个状态，然后这一组线程再同时执行；<br>另外，CountDownLatch是不能够重用的，而CyclicBarrier是可以重用的。</p>
+<p>2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。</p>
+<p>参考<br><a href="https://www.cnblogs.com/dolphin0520/p/3920397.html" target="_blank" rel="noopener">https://www.cnblogs.com/dolphin0520/p/3920397.html</a></p>
 
       
     </div>
@@ -341,15 +339,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/17/关于HashMap的知识/" rel="next" title="关于HashMap的知识">
+                <i class="fa fa-chevron-left"></i> 关于HashMap的知识
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/02/不可告人的方法/" rel="prev" title="不可告人的方法">
-                不可告人的方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -401,17 +399,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -460,22 +449,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
