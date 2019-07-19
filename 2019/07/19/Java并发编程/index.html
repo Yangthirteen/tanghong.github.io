@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Blog for 汤洪">
 <meta property="og:description" content="一、并发编程的一些辅助类1.CountDownLatch(1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值(3)主要方法：public void await() throws InterruptedExce">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T09:01:19.351Z">
+<meta property="og:updated_time" content="2019-07-19T14:03:27.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程">
 <meta name="twitter:description" content="一、并发编程的一些辅助类1.CountDownLatch(1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值(3)主要方法：public void await() throws InterruptedExce">
@@ -314,7 +314,12 @@ public Semaphore(int permits, boolean fair) {    //这个多了一个参数fair�
 <p>availablePermits()//得到可用的许可数目</p>
 <p>四、总结<br>1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同：<br>CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；<br>而CyclicBarrier一般用于一组线程互相等待至某个状态，然后这一组线程再同时执行；<br>另外，CountDownLatch是不能够重用的，而CyclicBarrier是可以重用的。</p>
 <p>2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。</p>
-<p>参考<br><a href="https://www.cnblogs.com/dolphin0520/p/3920397.html" target="_blank" rel="noopener">https://www.cnblogs.com/dolphin0520/p/3920397.html</a></p>
+<p>五、剖析volatile关键字<br>1.volatile关键字的两层语义<br>　　一旦一个共享变量（类的成员变量、类的静态成员变量）被volatile修饰之后，那么就具备了两层语义：<br>(1)保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。<br>(2)禁止进行指令重排序。</p>
+<p>2.修饰的作用<br>但是用volatile修饰之后就变得不一样了：<br>(1)使用volatile关键字会强制将修改的值立即写入主存；<br>(2)使用volatile关键字的话，当线程2进行修改时，会导致线程1的工作内存中缓存变量stop的缓存行无效（反映到硬件层的话，就是CPU的L1或者L2缓存中对应的缓存行无效）；<br>(3)由于线程1的工作内存中缓存变量stop的缓存行无效，所以线程1再次读取变量stop的值时会去主存读取。</p>
+<p>3.volatile可以保证可见性，但是无法保证原子性，因为程序可能存在破坏原子性的操作。</p>
+<p>4.volatile关键字能禁止指令重排序，所以volatile能在一定程度上保证有序性<br>volatile关键字禁止指令重排序有两层意思：<br>(1)当程序执行到volatile变量的读操作或者写操作时，在其前面的操作的更改肯定全部已经进行，且结果已经对后面的操作可见；在其后面的操作肯定还没有进行；<br>(2)在进行指令优化时，不能将在对volatile变量访问的语句放在其后面执行，也不能把volatile变量后面的语句放到其前面执行。</p>
+<p>5.使用场景<br>(1)对变量的写操作不依赖于当前值<br>(2)该变量没有包含在具有其他变量的不变式中<br>　　实际上，这些条件表明，可以被写入 volatile 变量的这些有效值独立于任何程序的状态，包括变量的当前状态。<br>　　事实上，我的理解就是上面的2个条件需要保证操作是原子性操作，才能保证使用volatile关键字的程序在并发时能够正确执行。</p>
+<p>参考<br><a href="https://www.cnblogs.com/dolphin0520/p/3920397.html" target="_blank" rel="noopener">https://www.cnblogs.com/dolphin0520/p/3920397.html</a><br><a href="https://www.cnblogs.com/dolphin0520/p/3920373.html" target="_blank" rel="noopener">https://www.cnblogs.com/dolphin0520/p/3920373.html</a></p>
 
       
     </div>
