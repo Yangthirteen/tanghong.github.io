@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Blog for 汤洪">
 <meta property="og:description" content="一、并发编程的一些辅助类  1.CountDownLatch (1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值(3)主要方法：public void await() throws Interrupted">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-20T01:17:41.203Z">
+<meta property="og:updated_time" content="2019-07-20T02:20:29.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程">
 <meta name="twitter:description" content="一、并发编程的一些辅助类  1.CountDownLatch (1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值(3)主要方法：public void await() throws Interrupted">
@@ -308,8 +308,7 @@
 <p>一、并发编程的一些辅助类</p>
 </blockquote>
 <p>1.CountDownLatch</p>
-<p>(1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。<br>(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值<br>(3)主要方法：<br>public void await() throws InterruptedException { };   //调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行<br>public boolean await(long timeout, TimeUnit unit) throws InterruptedException { };  //和await()类似，只不过等待一定的时间后count值还没变为0的话就会继续执行</p>
-<p>public void countDown() { }; //将count值减1</p>
+<p>(1)功能：CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。<br>(2)构造函数：public CountDownLatch(int count) { };  //参数count为计数值<br>(3)主要方法：<br>public void await() throws InterruptedException { };   //调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行<br>public boolean await(long timeout, TimeUnit unit) throws InterruptedException { };  //和await()类似，只不过等待一定的时间后count值还没变为0的话就会继续执行<br>public void countDown() { }; //将count值减1</p>
 <p>2.CyclicBarrier<br>(1)功能：CyclicBarrier类位于java.util.concurrent包下，字面意思回环栅栏，通过它可以实现让一组线程等待至某个状态之后再全部同时执行。叫做回环是因为当所有等待线程都被释放以后，CyclicBarrier可以被重用。我们暂且把这个状态就叫做barrier，当调用await()方法之后，线程就处于barrier了。<br>(2)构造函数：<br>public CyclicBarrier(int parties, Runnable barrierAction) {}<br>public CyclicBarrier(int parties) {}<br>(3)主要方法：<br>public int await() throws InterruptedException, BrokenBarrierException { };<br>public int await(long timeout, TimeUnit unit)throws InterruptedException,BrokenBarrierException,TimeoutException { };<br>第一个版本比较常用，用来挂起当前线程，直至所有线程都到达barrier状态再同时执行后续任务；<br>第二个版本是让这些线程等待至一定的时间，如果还有线程没有到达barrier状态就直接让到达barrier的线程执行后续任务。</p>
 <p>3.Semaphore<br>(1)功能：Semaphore类位于java.util.concurrent包下，Semaphore翻译成字面意思为 信号量，Semaphore可以控同时访问的线程个数，通过 acquire() 获取一个许可，如果没有就等待，而 release() 释放一个许可。<br>(2)构造函数：<br>public Semaphore(int permits) {          //参数permits表示许可数目，即同时可以允许多少线程进行访问<br>    sync = new NonfairSync(permits);<br>}
 public Semaphore(int permits, boolean fair) {    //这个多了一个参数fair表示是否是公平的，即等待时间越久的越先获取许可<br>    sync = (fair)? new FairSync(permits) : new NonfairSync(permits);<br>}
