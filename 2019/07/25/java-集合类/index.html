@@ -88,12 +88,13 @@
 <meta property="og:site_name" content="Blog for 汤洪">
 <meta property="og:description" content="一、Java集合类基本概念   集合类主要负责保存、盛装其他数据，因此集合类也被称为容器类。所以的集合类都位于java.util包下，后来为了处理多线程环境下的并发安全问题，java5还在java.util.concurrent包下提供了一些多线程支持的集合类。   Java容器类类库的用途是”保存对象”，并将其划分为两个不同的概念：  12345671) Collection一组&amp;quot;对">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/07/25/java-集合类/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/25/java-集合类/1.png">
-<meta property="og:updated_time" content="2019-07-25T14:40:34.492Z">
+<meta property="og:updated_time" content="2019-07-25T15:26:59.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java_集合类">
 <meta name="twitter:description" content="一、Java集合类基本概念   集合类主要负责保存、盛装其他数据，因此集合类也被称为容器类。所以的集合类都位于java.util包下，后来为了处理多线程环境下的并发安全问题，java5还在java.util.concurrent包下提供了一些多线程支持的集合类。   Java容器类类库的用途是”保存对象”，并将其划分为两个不同的概念：  12345671) Collection一组&amp;quot;对">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/25/java-集合类/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/25/java-集合类/2.png">
 
 
 
@@ -336,27 +337,28 @@
 <p><em>Collection</em></p>
 </blockquote>
 <p>Collection 作为集合的一个根接口，定义了一组对象和它的子类需要实现的 15 个方法</p>
+<p><img src="/2019/07/25/java-集合类/2.png" alt="Collection方法"></p>
 <ol>
 <li><em>Set(无序，不能重复)</em></li>
 </ol>
-<p>(1)HashSet</p>
-<p>(2)LinkedHashSet</p>
-<p>(3)TreeSet</p>
+<p>(1)HashSet：HashSet使用HASH算法来存储集合中的元素，因此具有良好的存取和查找性能。</p>
+<p>(2)LinkedHashSet：LinkedHashSet集合也是根据元素的hashCode值来决定元素的存储位置，但和HashSet不同的是，它同时使用链表维护元素的次序，这样使得元素看起来是以插入的顺序保存的。</p>
+<p>(3)TreeSet：TreeSet是SortedSet接口的实现类，TreeSet可以确保集合元素处于排序状态。</p>
 <ol start="2">
 <li><em>List(有序，可重复)</em></li>
 </ol>
-<p>(1)ArrayList</p>
-<p>(2)LinkedList</p>
-<p>(3)Vector(已过时)</p>
+<p>(1)ArrayList：ArrayList是基于数组实现的List类，它封装了一个动态的增长的、允许再分配的Object[]数组。</p>
+<p>(2)LinkedList：实现List接口，能对它进行队列操作，即可以根据索引来随机访问集合中的元素。同时它还实现Deque接口，即能将LinkedList当作双端队列。</p>
+<p>(3)Vector(已过时)：和ArrayList在用法上几乎完全相同，已改为实现List接口。</p>
 <blockquote>
 <p><em>Map(键值对，键唯一，值不唯一)</em></p>
 </blockquote>
 <ol>
-<li><p>HashMap</p>
+<li><p>HashMap：不能保证key-value对的顺序。</p>
 </li>
-<li><p>LinkedHashMap</p>
+<li><p>LinkedHashMap：使用双向链表来维护key-value对的次序，该链表负责维护Map的迭代顺序，与key-value对的插入顺序一致。</p>
 </li>
-<li><p>TreeMap</p>
+<li><p>TreeMap：是一个红黑树数据结构，每个key-value对即作为红黑树的一个节点。</p>
 </li>
 </ol>
 <p><img src="/2019/07/25/java-集合类/1.png" alt="1"></p>
