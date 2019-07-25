@@ -89,8 +89,7 @@
 <meta property="og:description" content="一、Java集合类基本概念  1.集合类主要负责保存、盛装其他数据，因此集合类也被称为容器类。所以的集合类都位于java.util包下，后来为了处理多线程环境下的并发安全问题，java5还在java.util.concurrent包下提供了一些多线程支持的集合类。 2.Java容器类类库的用途是”保存对象”，并将其划分为两个不同的概念：  12345671) Collection一组&amp;quot;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="c:%5CUsers%5CTH(LM)%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1564058139566.png">
-<meta property="og:updated_time" content="2019-07-25T12:35:42.971Z">
+<meta property="og:updated_time" content="2019-07-25T12:40:45.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java集合类">
 <meta name="twitter:description" content="一、Java集合类基本概念  1.集合类主要负责保存、盛装其他数据，因此集合类也被称为容器类。所以的集合类都位于java.util包下，后来为了处理多线程环境下的并发安全问题，java5还在java.util.concurrent包下提供了一些多线程支持的集合类。 2.Java容器类类库的用途是”保存对象”，并将其划分为两个不同的概念：  12345671) Collection一组&amp;quot;">
@@ -345,8 +344,7 @@ LinkedHashMap也使用双向链表来维护key-value对的次序，该链表负�
 Properties对象在处理属性文件时特别方便(windows平台上的.ini文件)，Properties类可以把Map对象和属性文件关联起来，从而可以把Map对象中的key-value对写入到属性文</code></pre>　　　　　件中，也可以把属性文件中的”属性名-属性值”加载到Map对象中<br>  3) SortedMap<br>  正如Set接口派生出SortedSet子接口，SortedSet接口有一个TreeSet实现类一样，Map接口也派生出一个SortedMap子接口，SortedMap接口也有一个TreeMap实现类<pre><code>3.1) TreeMap
 TreeMap就是一个红黑树数据结构，每个key-value对即作为红黑树的一个节点。TreeMap存储key-value对(节点)时，需要根据key对节点进行排序。TreeMap可以保证所有的</code></pre>　　　　 key-value对处于有序状态。同样，TreeMap也有两种排序方式: 自然排序、定制排序<br>  4) WeakHashMap<br>  WeakHashMap与HashMap的用法基本相似。区别在于，HashMap的key保留了对实际对象的”强引用”，这意味着只要该HashMap对象不被销毁，该HashMap所引用的对象就不会被垃圾回收。<br>　　但WeakHashMap的key只保留了对实际对象的弱引用，这意味着如果WeakHashMap对象的key所引用的对象没有被其他强引用变量所引用，则这些key所引用的对象可能被垃圾回收，当垃<br>　　圾回收了该key所对应的实际对象之后，WeakHashMap也可能自动删除这些key所对应的key-value对<br>  5) IdentityHashMap<br>  IdentityHashMap的实现机制与HashMap基本相似，在IdentityHashMap中，当且仅当两个key严格相等(key1 == key2)时，IdentityHashMap才认为两个key相等<br>  6) EnumMap<br>  EnumMap是一个与枚举类一起使用的Map实现，EnumMap中的所有key都必须是单个枚举类的枚举值。创建EnumMap时必须显式或隐式指定它对应的枚举类。EnumMap根据key的自然顺序<br>　　(即枚举值在枚举类中的定义顺序)</li>
 </ol>
-<p><img src="C:%5CUsers%5CTH(LM)%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1564058139566.png" alt="1564058139566"></p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![1](D:/图片/1.png)</span><br></pre></td></tr></table></figure>
       
     </div>
     
