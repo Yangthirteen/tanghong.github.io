@@ -89,7 +89,8 @@
 <meta property="og:description" content="select:选择 (1)select column_name,column_name from table_name; (2)select * from table_name;  select distinct:选择并且去除重复 select distinct column_name,column_name from table_name;  where:过滤 select column_na">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/08/23/java-sql/join.png">
-<meta property="og:updated_time" content="2019-08-25T12:20:01.772Z">
+<meta property="og:image" content="http://yoursite.com/2019/08/23/java-sql/%E7%BA%A6%E6%9D%9F.png">
+<meta property="og:updated_time" content="2019-08-25T14:27:29.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-sql">
 <meta name="twitter:description" content="select:选择 (1)select column_name,column_name from table_name; (2)select * from table_name;  select distinct:选择并且去除重复 select distinct column_name,column_name from table_name;  where:过滤 select column_na">
@@ -409,20 +410,291 @@
 <li><p>连接(join):将来自两个或者多个表的行结合起来</p>
 <p>(1)left join,right join,inner join,outer join</p>
 <p><img src="/2019/08/23/java-sql/join.png" alt="join.png"></p>
-</li>
-</ol>
 <p>(2)inner join:表中至少存在一个匹配是返回行</p>
 <p>(3)left join:即使右表无匹配，也返回左表中所有行</p>
 <p>(4)right join:即使左表无匹配，也返回右表中所有行</p>
 <p>(5)full outer join:只要左表或者右表其中一个存在匹配，就返回行</p>
-<p> select column_name(s) from table1 inner join table2 on table1.column_name=table2.column_name;</p>
-<ol start="16">
+<p>select column_name(s) from table1 inner join table2 on table1.column_name=table2.column_name;</p>
+</li>
 <li><p>union:合并两个或者多个select语句的结果</p>
 <p>(1)select column_name(s) from table1 union select column(s) from table2;</p>
 <p>(2)默认选取不重复，若要允许重复，则使用 union all</p>
 </li>
-<li></li>
+<li><p>select into:从一个表复制数据插入到另一个表中</p>
+<p>(1)select * into  newtable [in externaldb] from tabl1;</p>
+<p>(2)select column_name(s) into newtabel [in externaldb] from table1;</p>
+</li>
+<li><p>insert into select:从一个表复制数据插入到另一个表中</p>
+<p>(1)insert into table2 select * from table1;</p>
+<p>(2)insert into table2 (column_name(s)) select column_name(s) from table2;</p>
+</li>
+<li><p>create database:创建数据库</p>
+<p>(2)create database dbname;</p>
+</li>
+<li><p>create table:创建表</p>
+<p>(1)create tabletable_name(</p>
+</li>
 </ol>
+<p>column_name1 date_type(size),</p>
+<p>column_name2 date_type(size),</p>
+<p>column_name3 date_type(size),</p>
+<p>…</p>
+<p>);</p>
+<ol start="21">
+<li><p>约束:规定表中的数据规则</p>
+<p>(1)create table <em>table_name</em>(</p>
+</li>
+</ol>
+<p><em>column_name1 data_type</em>(<em>size</em>) <em>constraint_name</em>,
+<em>column_name2 data_type</em>(<em>size</em>) <em>constraint_name</em>,
+<em>column_name3 data_type</em>(<em>size</em>) <em>constraint_name</em>,
+….<br>);</p>
+<p>  (2)约束条件</p>
+<p><img src="/2019/08/23/java-sql/%E7%BA%A6%E6%9D%9F.png" alt="约束条件"></p>
+<ol start="22">
+<li><p>create index:创建索引</p>
+<p>(1)create index index_name on table_name (column_name)</p>
+<p>(2)不重复索引:create union index</p>
+</li>
+<li><p>drop:撤销索引、表和数据库</p>
+</li>
+<li><p>truncate:仅仅删除表内的数据，不删除表本身</p>
+</li>
+<li><p>alter table:在已有表中添加、删除或修改列</p>
+</li>
+<li><p>auto increment:在新记录插入时生成唯一的数字</p>
+</li>
+<li><p>视图:可视化的表</p>
+<p>(1)创建:create view view_name as select column_name(s) from table_name where condition</p>
+<p>(2)更新:create or replace view view_name as select column_name(s) form table_name where condition</p>
+<p>(3)撤销:drop view view_name</p>
+</li>
+<li><p>mysql date函数</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-now.html" target="_blank" rel="noopener">NOW()</a></td>
+<td align="left">返回当前的日期和时间</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-curdate.html" target="_blank" rel="noopener">CURDATE()</a></td>
+<td align="left">返回当前的日期</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-curtime.html" target="_blank" rel="noopener">CURTIME()</a></td>
+<td align="left">返回当前的时间</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-date.html" target="_blank" rel="noopener">DATE()</a></td>
+<td align="left">提取日期或日期/时间表达式的日期部分</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-extract.html" target="_blank" rel="noopener">EXTRACT()</a></td>
+<td align="left">返回日期/时间的单独部分</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-date-add.html" target="_blank" rel="noopener">DATE_ADD()</a></td>
+<td align="left">向日期添加指定的时间间隔</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-date-sub.html" target="_blank" rel="noopener">DATE_SUB()</a></td>
+<td align="left">从日期减去指定的时间间隔</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-datediff-mysql.html" target="_blank" rel="noopener">DATEDIFF()</a></td>
+<td align="left">返回两个日期之间的天数</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/sql/func-date-format.html" target="_blank" rel="noopener">DATE_FORMAT()</a></td>
+<td align="left">用不同的格式显示日期/时间</td>
+</tr>
+</tbody></table>
+<p><strong>MySQL</strong> 使用下列数据类型在数据库中存储日期或日期/时间值：</p>
+<ul>
+<li>DATE - 格式：YYYY-MM-DD</li>
+<li>DATETIME - 格式：YYYY-MM-DD HH:MM:SS</li>
+<li>TIMESTAMP - 格式：YYYY-MM-DD HH:MM:SS</li>
+<li>YEAR - 格式：YYYY 或 YY</li>
+</ul>
+<ol start="29">
+<li><p>is null 和 is not null:比较和测试null值</p>
+</li>
+<li><p>null函数:isnull()、nvl()、ifnull()和coalesce()</p>
+</li>
+<li><p>sql通用数据类型</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">数据类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CHARACTER(n)</td>
+<td align="left">字符/字符串。固定长度 n。</td>
+</tr>
+<tr>
+<td align="left">VARCHAR(n) 或 CHARACTER VARYING(n)</td>
+<td align="left">字符/字符串。可变长度。最大长度 n。</td>
+</tr>
+<tr>
+<td align="left">BINARY(n)</td>
+<td align="left">二进制串。固定长度 n。</td>
+</tr>
+<tr>
+<td align="left">BOOLEAN</td>
+<td align="left">存储 TRUE 或 FALSE 值</td>
+</tr>
+<tr>
+<td align="left">VARBINARY(n) 或 BINARY VARYING(n)</td>
+<td align="left">二进制串。可变长度。最大长度 n。</td>
+</tr>
+<tr>
+<td align="left">INTEGER(p)</td>
+<td align="left">整数值（没有小数点）。精度 p。</td>
+</tr>
+<tr>
+<td align="left">SMALLINT</td>
+<td align="left">整数值（没有小数点）。精度 5。</td>
+</tr>
+<tr>
+<td align="left">INTEGER</td>
+<td align="left">整数值（没有小数点）。精度 10。</td>
+</tr>
+<tr>
+<td align="left">BIGINT</td>
+<td align="left">整数值（没有小数点）。精度 19。</td>
+</tr>
+<tr>
+<td align="left">DECIMAL(p,s)</td>
+<td align="left">精确数值，精度 p，小数点后位数 s。例如：decimal(5,2) 是一个小数点前有 3 位数，小数点后有 2 位数的数字。</td>
+</tr>
+<tr>
+<td align="left">NUMERIC(p,s)</td>
+<td align="left">精确数值，精度 p，小数点后位数 s。（与 DECIMAL 相同）</td>
+</tr>
+<tr>
+<td align="left">FLOAT(p)</td>
+<td align="left">近似数值，尾数精度 p。一个采用以 10 为基数的指数计数法的浮点数。该类型的 size 参数由一个指定最小精度的单一数字组成。</td>
+</tr>
+<tr>
+<td align="left">REAL</td>
+<td align="left">近似数值，尾数精度 7。</td>
+</tr>
+<tr>
+<td align="left">FLOAT</td>
+<td align="left">近似数值，尾数精度 16。</td>
+</tr>
+<tr>
+<td align="left">DOUBLE PRECISION</td>
+<td align="left">近似数值，尾数精度 16。</td>
+</tr>
+<tr>
+<td align="left">DATE</td>
+<td align="left">存储年、月、日的值。</td>
+</tr>
+<tr>
+<td align="left">TIME</td>
+<td align="left">存储小时、分、秒的值。</td>
+</tr>
+<tr>
+<td align="left">TIMESTAMP</td>
+<td align="left">存储年、月、日、小时、分、秒的值。</td>
+</tr>
+<tr>
+<td align="left">INTERVAL</td>
+<td align="left">由一些整数字段组成，代表一段时间，取决于区间的类型。</td>
+</tr>
+<tr>
+<td align="left">ARRAY</td>
+<td align="left">元素的固定长度的有序集合</td>
+</tr>
+<tr>
+<td align="left">MULTISET</td>
+<td align="left">元素的可变长度的无序集合</td>
+</tr>
+<tr>
+<td align="left">XML</td>
+<td align="left">存储 XML 数据</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">数据类型</th>
+<th align="left">Access</th>
+<th align="left">SQLServer</th>
+<th align="left">Oracle</th>
+<th align="left">MySQL</th>
+<th align="left">PostgreSQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>boolean</em></td>
+<td align="left">Yes/No</td>
+<td align="left">Bit</td>
+<td align="left">Byte</td>
+<td align="left">N/A</td>
+<td align="left">Boolean</td>
+</tr>
+<tr>
+<td align="left"><em>integer</em></td>
+<td align="left">Number (integer)</td>
+<td align="left">Int</td>
+<td align="left">Number</td>
+<td align="left">Int Integer</td>
+<td align="left">Int Integer</td>
+</tr>
+<tr>
+<td align="left"><em>float</em></td>
+<td align="left">Number (single)</td>
+<td align="left">Float Real</td>
+<td align="left">Number</td>
+<td align="left">Float</td>
+<td align="left">Numeric</td>
+</tr>
+<tr>
+<td align="left"><em>currency</em></td>
+<td align="left">Currency</td>
+<td align="left">Money</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">Money</td>
+</tr>
+<tr>
+<td align="left"><em>string (fixed)</em></td>
+<td align="left">N/A</td>
+<td align="left">Char</td>
+<td align="left">Char</td>
+<td align="left">Char</td>
+<td align="left">Char</td>
+</tr>
+<tr>
+<td align="left"><em>string (variable)</em></td>
+<td align="left">Text (&lt;256) Memo (65k+)</td>
+<td align="left">Varchar</td>
+<td align="left">Varchar Varchar2</td>
+<td align="left">Varchar</td>
+<td align="left">Varchar</td>
+</tr>
+<tr>
+<td align="left"><em>binary object</em></td>
+<td align="left">OLE Object Memo</td>
+<td align="left">Binary (fixed up to 8K) Varbinary (&lt;8K) Image (&lt;2GB)</td>
+<td align="left">Long Raw</td>
+<td align="left">Blob Text</td>
+<td align="left">Binary Varbinary</td>
+</tr>
+</tbody></table>
 
       
     </div>
