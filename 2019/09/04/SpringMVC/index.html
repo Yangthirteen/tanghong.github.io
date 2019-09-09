@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Blog for 汤洪" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、MVC设计模式  1.概念：模型(Model)、视图(View)、控制器（Controller） 2.JSP Model1：JavaBean+Servlet+JSP ![JSP Model1](/SpringMVC/JSP Model1.png)  JSP充当控制器和视图，结构混乱，不建议。 3.JSP Model2：JSP+Servlet+JavaBean ![JSP Model1](/S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringMVC">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/SpringMVC/index.html">
+<meta property="og:site_name" content="Blog for 汤洪">
+<meta property="og:description" content="一、MVC设计模式  1.概念：模型(Model)、视图(View)、控制器（Controller） 2.JSP Model1：JavaBean+Servlet+JSP ![JSP Model1](/SpringMVC/JSP Model1.png)  JSP充当控制器和视图，结构混乱，不建议。 3.JSP Model2：JSP+Servlet+JavaBean ![JSP Model1](/S">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/SpringMVC.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/SpringMVC%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8_3.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8%E9%85%8D%E7%BD%AE_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8%E9%85%8D%E7%BD%AE_2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_3.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_4.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/@RequestMapping%E9%85%8D%E7%BD%AE_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/ModelAndView.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E8%BF%94%E5%9B%9E%E9%80%BB%E8%BE%91%E8%A7%86%E5%9B%BE%E5%90%8D.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/redirect%E9%87%8D%E5%AE%9A%E5%90%91.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/forword%E9%A1%B5%E9%9D%A2%E8%BD%AC%E5%8F%91.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/@RequestParam%E5%AE%9E%E7%8E%B0%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%BB%91%E5%AE%9A.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%BB%91%E5%AE%9A_2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E6%8B%A6%E6%88%AA%E5%99%A8%E5%AE%9A%E4%B9%89.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E6%8B%A6%E6%88%AA%E5%99%A8%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/SpringMVC/%E6%8B%A6%E6%88%AA%E5%99%A8%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE.png">
+<meta property="og:updated_time" content="2019-09-09T04:15:49.555Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringMVC">
+<meta name="twitter:description" content="一、MVC设计模式  1.概念：模型(Model)、视图(View)、控制器（Controller） 2.JSP Model1：JavaBean+Servlet+JSP ![JSP Model1](/SpringMVC/JSP Model1.png)  JSP充当控制器和视图，结构混乱，不建议。 3.JSP Model2：JSP+Servlet+JavaBean ![JSP Model1](/S">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/04/SpringMVC/SpringMVC.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/04/SpringMVC/">
+
+
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+  <title>SpringMVC | Blog for 汤洪</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog for 汤洪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/SpringMVC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tanghong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog for 汤洪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringMVC</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-04T10:17:57+08:00">
+                2019-09-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>一、MVC设计模式</p>
+</blockquote>
+<p>1.概念：<strong>模型(Model)、视图(View)、控制器（Controller）</strong></p>
+<p>2.JSP Model1：JavaBean+Servlet+JSP</p>
+<p>![JSP Model1](/SpringMVC/JSP Model1.png) </p>
+<p>JSP充当控制器和视图，结构混乱，不建议。</p>
+<p>3.JSP Model2：JSP+Servlet+JavaBean</p>
+<p>![JSP Model1](/SpringMVC/JSP Model2.png)</p>
+<p>结构清晰，效果好</p>
+<p>4.MVC的处理过程</p>
+<ol>
+<li>首先视图提供系统与用户交互的界面，并发送用户的输入给控制器；</li>
+<li>控制器接收到用户的请求，根据判断，决定调用哪个模型的哪个方法进行处理；</li>
+<li>模型被控制器调用，根据控制器的指令进行相应的业务逻辑处理，并返回处理结果（数据）；</li>
+<li>控制器根据返回的结果，调用相应的视图来渲染、格式化模型返回的数据；</li>
+<li>视图响应给客户端浏览器。</li>
+</ol>
+<blockquote>
+<p>二、SpringMVC</p>
+</blockquote>
+<p>1.请求处理流程</p>
+<p><img src="/2019/09/04/SpringMVC/SpringMVC.png" alt="SpringMVC请求处理流程"></p>
+<p>2.具体分析处理步骤</p>
+<ol>
+<li>首先用户发送请求到前端控制器（DispatcherServlet），前端控制器根据请求信息（比如URL）决定将请求分发给哪个页面控制器（Controller）来处理。对应上图中的步骤1、2。</li>
+<li>页面控制器接收到请求之后，进行业务处理，处理完毕之后返回一个ModelAndView。对应上图中的步骤3、4、5。</li>
+<li>前端控制器将控制权收回，然后根据返回的逻辑视图名，通过视图解析器选择真正的视图，将模型数据传入供其渲染展示。对应上图中的步骤6、7。</li>
+<li>前端控制器再次收回控制权，将响应结果返回给浏览器客户端，至此整个流程结束。对应上图中的步骤8。</li>
+</ol>
+<p>3.体系结构</p>
+<p><img src="/2019/09/04/SpringMVC/SpringMVC%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" alt="SpringMVC体系结构"></p>
+<p>组件工作内容</p>
+<ol>
+<li>客户端发出HTTP请求，Web应用服务器接收此请求。如匹配DispatcherServlet的请求映射路径，则Web容器将该请求转交给DispatcherServlet处理；</li>
+<li>DispatcherServlet拿到请求之后，根据请求的信息（URL、请求参数、HTTP方法等）及HandlerMapping的配置找到处理请求的处理器（Handler）；</li>
+<li>当DispatcherServlet找到相应的Handler之后，通过HandlerAdapter对Handler进行封装，再以统一的适配器接口调用Handler。HandlerAdapter可以理解为真正使用Handler来干活的人。</li>
+<li>在请求信息真正到达调用Handler的处理方法之前的这段时间，Spring MVC还完成了很多工作，它会将请求信息以一定的方式转换并绑定到请求方法的入参，对于入参的对象会进行数据转换、数据格式化以及数据校验等。这些都做完以后，最后才真正调用Handler的处理方法进行相应的业务逻辑处理。</li>
+<li>处理器完成业务处理之后，将一个ModelAndView对象返回给DispatcherServlet，其中包含了逻辑视图名和模型数据信息。</li>
+<li>DispatcherServlet通过ViewResolver将逻辑视图名解析为真正的视图对象View，可以是JSP、HTML、XML、PDF、JSON等等，Spring MVC均可灵活配置，在以后会介绍。</li>
+<li>得到真正的视图对象之后，DispatcherServlet会根据ModelAndView对象中的模型数据对View进行视图渲染。</li>
+<li>最终客户端获得响应消息。</li>
+</ol>
+<p>4.SpringMVC组件</p>
+<p>(1)前端控制器DispatcherServlet（不需要程序员开发）<br>       作用接收请求，响应结果，相当于转发器，中央处理器<br>       有了DispatcherServlet减少了其它组件之间的耦合度<br>(2)处理器映射器HandlerMapping(不需要程序员开发)<br>       作用：根据请求的url查找Handler<br>(3)处理器适配器HandlerAdapter<br>       作用：按照特定规则（HandlerAdapter要求的规则）去执行Handler<br>(4)处理器Handler(需要程序员开发)<br>       注意：编写Handler时按照HandlerAdapter的要求去做，这样适配器才可以去正确执行Handler<br>(5)视图解析器View resolver(不需要程序员开发)<br>       作用：进行视图解析，根据逻辑视图名解析成真正的视图（view）<br>(6)视图View(需要程序员开发jsp)<br>       View是一个接口，实现类支持不同的View类型（jsp、freemarker、pdf…）</p>
+<p>5.处理器映射器与适配器</p>
+<p>（1）非注解的处理器映射器</p>
+<p>org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping<br>org.springframework.web.servlet.handler.SimpleUrlHandlerMapping</p>
+<p><img src="/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_1.png" alt="非注解处理器映射器配置_1"></p>
+<p><img src="/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_2.png" alt="非注解处理器映射器配置_2"></p>
+<p>simpleUrlHandlerMapping是BeanNameUrlHandlerMapping的增强版本，它可以将url和处理器bean的id进行统一映射配置。</p>
+<p><img src="/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8_3.png" alt="非注解的处理器映射器配置_3"></p>
+<p>（2）非注解的处理器适配器</p>
+<p>org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter<br>org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter</p>
+<p>SimpleControllerHandlerAdapter简单控制器处理器适配器，所有实现了org.springframework.web.servlet.mvc.Controller 接口的Bean通过此适配器进行适配、执行。</p>
+<p><img src="/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8%E9%85%8D%E7%BD%AE_1.png" alt="非注解的处理器适配器配置_1"></p>
+<p><img src="/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8%E9%85%8D%E7%BD%AE_2.png" alt="非注解的处理器适配器配置_2"></p>
+<p>HttpRequestHandlerAdapter，http请求处理器适配器，所有实现了org.springframework.web.HttpRequestHandler 接口的Bean通过此适配器进行适配、执行。</p>
+<p><img src="/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_3.png" alt="非注解处理器映射器配置_3"></p>
+<p><img src="/2019/09/04/SpringMVC/%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_4.png" alt="非注解处理器映射器配置_4"></p>
+<p>HttpRequestHandlerAdapter的handleRequest方法没有返回值ModelAndView，可以通过request或者response对象的请求转发和重定向进行页面跳转，也可通过response对象修改定义响应内容</p>
+<p>（3）注解式处理器映射器：对类中标记@ResquestMapping的方法进行映射org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping注解映射器。</p>
+<p><img src="/2019/09/04/SpringMVC/%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_1.png" alt="注解的处理器映射器配置_1"></p>
+<p>（4）注解式的处理器适配器：对标记@ResquestMapping的方法进行适配。</p>
+<p>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter注解适配器。</p>
+<p><img src="/2019/09/04/SpringMVC/%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E6%98%A0%E5%B0%84%E5%99%A8%E9%85%8D%E7%BD%AE_2.png" alt="注解的处理器映射器配置_2"></p>
+<p>（5）实际开发常用：使用 mvc:annotation-driven代替上边注解映射器和注解适配器配置</p>
+<p>6.映射请求、方法返回值和参数绑定</p>
+<p>（1）@RequstMapping映射请求</p>
+<p><img src="/2019/09/04/SpringMVC/@RequestMapping%E9%85%8D%E7%BD%AE_1.png" alt="@RequestMapping配置_1"></p>
+<p>@RequestMapping 的 value、method、params 及 headers 分别表示请求 URL、请求方法、请求参数及请求头的映射条件</p>
+<p>(2)controller方法的返回值</p>
+<p>1.返回ModelAndView</p>
+<p>定义ModelAndView对象并返回，对象中可添加model数据、指定view。</p>
+<p><img src="/2019/09/04/SpringMVC/ModelAndView.png" alt="ModelAndView"></p>
+<p>2.返回字符串</p>
+<p>表示返回逻辑视图名</p>
+<p><img src="/2019/09/04/SpringMVC/%E8%BF%94%E5%9B%9E%E9%80%BB%E8%BE%91%E8%A7%86%E5%9B%BE%E5%90%8D.png" alt="返回逻辑视图名">redirect重定向:浏览器地址栏中的url会变化。修改提交的request数据无法传到重定向的地址。因为重定向后重新进行request（request无法共享）</p>
+<p><img src="/2019/09/04/SpringMVC/redirect%E9%87%8D%E5%AE%9A%E5%90%91.png" alt="redirect重定向"></p>
+<p>forward页面转发:浏览器地址栏url不变，request可以共享。</p>
+<p><img src="/2019/09/04/SpringMVC/forword%E9%A1%B5%E9%9D%A2%E8%BD%AC%E5%8F%91.png" alt="forword页面转发"></p>
+<p>3.返回void:在controller方法形参上可以定义request和response，使用request或response指定响应结果</p>
+<p>使用request转向页面，如下：<br>request.getRequestDispatcher(“页面路径”).forward(request, response);<br>可以通过response页面重定向：<br>response.sendRedirect(“url”)<br>可以通过response指定响应结果，例如响应json数据如下：<br>response.setCharacterEncoding(“utf-8”);<br>response.setContentType(“application/json;charset=utf-8”);<br>response.getWriter().write(“json串”);</p>
+<p>（3）参数绑定</p>
+<p>1.默认识别并赋值：HttpServletRequest、HttpServletResponse、HttpSession、Model/ModelMap</p>
+<p>2.简单类型绑定:需要名称一致（支持整型、字符串、单精度/双精度、布尔型）</p>
+<p>3.使用@RequestParam：不需要名称一致</p>
+<p><img src="/2019/09/04/SpringMVC/@RequestParam%E5%AE%9E%E7%8E%B0%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A.png" alt="@RequestParam实现参数绑定"></p>
+<p>4.POJO类型绑定</p>
+<p>将pojo对象中的属性名与传递进来的参数名对应</p>
+<p>将pojo对象作为一个包装对象的属性，controller方法中以该包装对象作为形参。</p>
+<p>5.自定义参数绑定（日期类型）</p>
+<p><img src="/2019/09/04/SpringMVC/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%BB%91%E5%AE%9A.png" alt="自定义参数类型绑定"></p>
+<p><img src="/2019/09/04/SpringMVC/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%BB%91%E5%AE%9A_2.png" alt="自定义参数类型绑定_2"></p>
+<p>6.集合类型绑定：支持字符串数组、List、Map</p>
+<p>7.数据校验、异常处理和拦截器</p>
+<p>（1）数据校验：springmvc使用hibernate的校验框架validation</p>
+<p>校验思路：<br>页面提交请求的参数，请求到controller方法中，使用validation进行校验。如果校验出错，将错误信息展示到页面。</p>
+<p>步骤：pom.xml导入校验jar文件-&gt;配置校验器-&gt;校验器注入到处理器适配器中-&gt;添加校验规则-&gt;错误信息文件-&gt;捕获错误信息-&gt;显示错误信息</p>
+<p>分组校验:在pojo中定义校验规则，而pojo是被多个 controller所共用，当不同的controller方法对同一个pojo进行校验，但是每个controller方法需要不同的校验。</p>
+<p>数据回显</p>
+<p>1.简单数据类型：使用model.addAttribute( )方法，将传入的参数再放到request域实现显示</p>
+<p>2.pojo数据类型：默认支持、@ModelAttribute、model.addAttribute</p>
+<p>（2）异常处理</p>
+<p><img src="/2019/09/04/SpringMVC/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.png" alt="异常处理"></p>
+<p>步骤：定义自定义异常类-&gt;定义异常处理器-&gt;配置异常处理器-&gt;编写异常信息文件-&gt;异常类应用</p>
+<p>（3）拦截器：对处理器进行预处理和后处理（定义＋配置）</p>
+<p><img src="/2019/09/04/SpringMVC/%E6%8B%A6%E6%88%AA%E5%99%A8%E5%AE%9A%E4%B9%89.png" alt="拦截器定义"></p>
+<p><img src="/2019/09/04/SpringMVC/%E6%8B%A6%E6%88%AA%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="拦截器配置"></p>
+<p><img src="/2019/09/04/SpringMVC/%E6%8B%A6%E6%88%AA%E5%99%A8%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE.png" alt="拦截器全局配置"></p>
+<p>8.文件上传和json数据交互</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/27/java-mysql/" rel="next" title="java-mysql">
+                <i class="fa fa-chevron-left"></i> java-mysql
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tanghong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tanghong</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
