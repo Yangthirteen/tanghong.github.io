@@ -81,17 +81,26 @@
 
 
 
-<meta name="description" content="hashmap  1.本质，数组存储键值对，链表解决hashcode重复冲突. 2.方法(1)put：采用头插法，因为后到来的entry被查找的可能性更大，hashMap.put(“apple”, 0)(2)get：index =  Hash（“apple”） 3.默认长度：16hash函数采用位运算index =  HashCode（Key） &amp;amp;  （Length - 1），2的幂的位">
+<meta name="description" content="第二章—–软件测试概述  1.软件测试定义的两面性  正向思维－验证软件正常工作 逆向思维－假定软件有错误  2.软件测试定义  Bill Hetzel博士 软件测试就是一系列活动，这些活动是为了评估一个程序或软件系统的特性与能力，并确定是否达到了预期效果。   IEEE 使用人工或自动手段，来运行或测试某个系统的过程。其目的在于检验它是否满足规定的需求或弄清预期结果与实际结果之间的差别。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java-HashMap">
-<meta property="og:url" content="http://yoursite.com/2019/09/22/java-HashMap/index.html">
+<meta property="og:title" content="软件测试技术">
+<meta property="og:url" content="http://yoursite.com/2019/09/23/软件测试技术/index.html">
 <meta property="og:site_name" content="Blog for 汤洪">
-<meta property="og:description" content="hashmap  1.本质，数组存储键值对，链表解决hashcode重复冲突. 2.方法(1)put：采用头插法，因为后到来的entry被查找的可能性更大，hashMap.put(“apple”, 0)(2)get：index =  Hash（“apple”） 3.默认长度：16hash函数采用位运算index =  HashCode（Key） &amp;amp;  （Length - 1），2的幂的位">
+<meta property="og:description" content="第二章—–软件测试概述  1.软件测试定义的两面性  正向思维－验证软件正常工作 逆向思维－假定软件有错误  2.软件测试定义  Bill Hetzel博士 软件测试就是一系列活动，这些活动是为了评估一个程序或软件系统的特性与能力，并确定是否达到了预期效果。   IEEE 使用人工或自动手段，来运行或测试某个系统的过程。其目的在于检验它是否满足规定的需求或弄清预期结果与实际结果之间的差别。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-22T08:27:03.115Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/%E4%BF%AE%E5%A4%8D%E8%B4%B9%E7%94%A8.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%88%AB.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/V%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/W%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/X%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/H%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:updated_time" content="2019-09-25T01:36:48.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-HashMap">
-<meta name="twitter:description" content="hashmap  1.本质，数组存储键值对，链表解决hashcode重复冲突. 2.方法(1)put：采用头插法，因为后到来的entry被查找的可能性更大，hashMap.put(“apple”, 0)(2)get：index =  Hash（“apple”） 3.默认长度：16hash函数采用位运算index =  HashCode（Key） &amp;amp;  （Length - 1），2的幂的位">
+<meta name="twitter:title" content="软件测试技术">
+<meta name="twitter:description" content="第二章—–软件测试概述  1.软件测试定义的两面性  正向思维－验证软件正常工作 逆向思维－假定软件有错误  2.软件测试定义  Bill Hetzel博士 软件测试就是一系列活动，这些活动是为了评估一个程序或软件系统的特性与能力，并确定是否达到了预期效果。   IEEE 使用人工或自动手段，来运行或测试某个系统的过程。其目的在于检验它是否满足规定的需求或弄清预期结果与实际结果之间的差别。">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/23/软件测试技术/%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E5%88%86%E5%B8%83.png">
 
 
 
@@ -121,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/22/java-HashMap/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/23/软件测试技术/">
 
 
 
@@ -130,7 +139,7 @@
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
 
 
-  <title>java-HashMap | Blog for 汤洪</title>
+  <title>软件测试技术 | Blog for 汤洪</title>
   
 
 
@@ -237,7 +246,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/java-HashMap/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/软件测试技术/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tanghong">
@@ -254,7 +263,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java-HashMap</h1>
+          <h1 class="post-title" itemprop="name headline">软件测试技术</h1>
         
 
         <div class="post-meta">
@@ -266,8 +275,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T16:25:34+08:00">
-                2019-09-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T22:35:57+08:00">
+                2019-09-23
               </time>
             
 
@@ -305,32 +314,181 @@
 
       
         <blockquote>
-<p>hashmap</p>
+<p>第二章—–软件测试概述</p>
 </blockquote>
-<p>1.本质，数组存储键值对，链表解决hashcode重复冲突.</p>
-<p>2.方法<br>(1)put：采用头插法，因为后到来的entry被查找的可能性更大，hashMap.put(“apple”, 0)<br>(2)get：index =  Hash（“apple”）</p>
-<p>3.默认长度：16<br>hash函数采用位运算index =  HashCode（Key） &amp;  （Length - 1），2的幂的位全部是1111，所以完全取决于hashcode的分布。</p>
-<p>4.rehash：hashmap扩容—HashMap.Size   &gt;=  Capacity * LoadFactor。</p>
-<p>5.高并发的hashmap：会出现链表环形<br>(1)某个线程完成rehash后，原本数组清空<br>(2)出现环形，get错误<br>(3)解决方法：使用currenthashmap<br>本质：segment –》二级hashmap<br>不同Segment的写入是可以并发执行的。<br>同一Segment的写和读是可以并发执行的。<br>Segment的写入是需要上锁的，因此对同一Segment的并发写入会被阻塞。</p>
-<p>CurrentHashMap方法：</p>
-<p>Get方法：</p>
-<p>1.为输入的Key做Hash运算，得到hash值。</p>
-<p>2.通过hash值，定位到对应的Segment对象</p>
-<p>3.再次通过hash值，定位到Segment当中数组的具体位置。</p>
-<p>Put方法：</p>
-<p>1.为输入的Key做Hash运算，得到hash值。</p>
-<p>2.通过hash值，定位到对应的Segment对象</p>
-<p>3.获取可重入锁</p>
-<p>4.再次通过hash值，定位到Segment当中数组的具体位置。</p>
-<p>5.插入或覆盖HashEntry对象。</p>
-<p>6.释放锁。</p>
-<p>解决获取size时可能出现修改问题<br>1.遍历所有的Segment。</p>
-<p>2.把Segment的元素数量累加起来。</p>
-<p>3.把Segment的修改次数累加起来。</p>
-<p>4.判断所有Segment的总修改次数是否大于上一次的总修改次数。如果大于，说明统计过程中有修改，重新统计，尝试次数+1；如果不是。说明没有修改，统计结束。</p>
-<p>5.如果尝试次数超过阈值，则对每一个Segment加锁，再重新统计。</p>
-<p>6.再次判断所有Segment的总修改次数是否大于上一次的总修改次数。由于已经加锁，次数一定和上次相等。</p>
-<p>7.释放锁，统计结束。  </p>
+<p>1.软件测试定义的两面性</p>
+<ul>
+<li>正向思维－验证软件正常工作</li>
+<li>逆向思维－假定软件有错误</li>
+</ul>
+<p>2.软件测试定义</p>
+<ul>
+<li>Bill Hetzel博士<ul>
+<li>软件测试就是一系列活动，这些活动是为了评估一个程序或软件系统的特性与能力，并确定是否达到了预期效果。</li>
+</ul>
+</li>
+<li>IEEE<ul>
+<li>使用人工或自动手段，来运行或测试某个系统的过程。其目的在于检验它是否满足规定的需求或弄清预期结果与实际结果之间的差别。   </li>
+<li>软件测试是以检验是否满足需求为目标。</li>
+</ul>
+</li>
+</ul>
+<p>3.Bug：Bug是软件测试中不符合用户需求的问题</p>
+<ul>
+<li>完全没有实现的功能</li>
+<li>功能或性能问题或差异</li>
+<li>多余的功能</li>
+</ul>
+<p>4.软件缺陷的现象</p>
+<ul>
+<li>功能、特性没有实现或部分实现</li>
+<li>设计不合理，存在缺陷</li>
+<li>实际结果和预期结果不一致</li>
+<li>运行出错，包括运行中断、系统崩溃、界面混乱</li>
+<li>数据结果不正确、精度不够</li>
+<li>用户不能接受的其他问题，如存取时间过长、界面不美观 </li>
+</ul>
+<p>5.软件缺陷的判定</p>
+<ul>
+<li>软件未达到产品说明书中已标明的功能</li>
+<li>软件出现了产品说明书中指明不会出现的错误</li>
+<li>软件功能超出了产品说明书指明的范围</li>
+<li>软件未达到产品说明书虽未指出但应达到的目标</li>
+<li>软件测试员认为软件难以理解，不易使用，运行速度缓慢，或者最终用户认为该软件使用效果不好</li>
+</ul>
+<p>6.软件缺陷</p>
+<ul>
+<li>产品内部 —— 软件产品开发或维护过程中所存在的错误、毛病等各种问题</li>
+<li>产品外部 —— 系统所需要实现的某种功能的实现或违背</li>
+</ul>
+<p>7.软件缺陷的产生</p>
+<ul>
+<li><p>技术问题</p>
+<ul>
+<li>算法错误，语法错误，计算和精度问题，接口参数传递不匹配</li>
+</ul>
+</li>
+<li><p>团队工作</p>
+<ul>
+<li>沟通不充分，误解</li>
+</ul>
+</li>
+<li><p>软件本身</p>
+<ul>
+<li>文档错误、用户使用场合(user scenario)，</li>
+<li>时间上不协调、或不一致性所带来的问题</li>
+<li>系统的自我恢复或数据的异地备份、灾难性恢复等问题</li>
+</ul>
+</li>
+<li><p>分布</p>
+</li>
+</ul>
+<p><img src="/2019/09/23/软件测试技术/%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E5%88%86%E5%B8%83.png" alt="软件缺陷分布"></p>
+<ul>
+<li>修复费用</li>
+</ul>
+<p><img src="/2019/09/23/软件测试技术/%E4%BF%AE%E5%A4%8D%E8%B4%B9%E7%94%A8.png" alt="修复费用"></p>
+<p>8.软件测试基本原则</p>
+<ul>
+<li><p>Zero bug 与Good Enough</p>
+</li>
+<li><p>不可能执行穷尽测试</p>
+</li>
+<li><p>测试应该尽早启动，尽早介入</p>
+</li>
+<li><p>软件测试应该追溯需求</p>
+</li>
+<li><p>缺陷存在群集现象</p>
+</li>
+<li><p>缺陷具有免疫性（杀虫剂悖论）</p>
+</li>
+<li><p>不存在缺陷的理论、测试无法显示潜伏的软件缺陷</p>
+</li>
+</ul>
+<p>2019.09.23</p>
+<blockquote>
+<p>第三章——软件测试概述（二）</p>
+</blockquote>
+<blockquote>
+<p>一、软件测试分类</p>
+</blockquote>
+<p><img src="/2019/09/23/软件测试技术/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB.png" alt="软件测试分类"></p>
+<p>1.黑盒测试和白盒测试</p>
+<p>2.静态测试和动态测试</p>
+<ul>
+<li>静态测试：不实际运行被测软件，只是静态地检查程序代码、界面或文档中可能存在错误的过程。<ul>
+<li>代码测试</li>
+<li>界面测试</li>
+<li>文档测试</li>
+</ul>
+</li>
+<li>动态测试：动态测试是通过真正运行程序发现错误，通过观察代码运行过程，来获取系统信息，对系统行为进行验证。</li>
+<li>黑盒测试可能是动态的（运行程序，只看输入和输出），也可能是静态的（不运行程序，只查看界面）</li>
+<li>白盒测试可能是动态的（运行程序，分析代码结构），也可能是静态的（不运行程序，静态查看代码）</li>
+</ul>
+<p>3.单元测试</p>
+<ul>
+<li>对软件中的最小可测试单元进行检查和验证。</li>
+</ul>
+<p>4.集成测试（组装测试）</p>
+<ul>
+<li>在单元测试的基础上，将模块按照设计要求组装起来同时进行测试，主要目标是发现与接口有关的模块之间问题。</li>
+<li>一次性集成测试</li>
+<li>渐增式集成测试</li>
+</ul>
+<p>5.系统测试</p>
+<ul>
+<li>主要由黑盒测试工程师进行，前期主测系统功能是否满足需求，后期主测系统运行性能是否满足需求，以及系统在不同的软硬件环境中的兼容性。</li>
+<li>系统功能测试</li>
+<li>系统非功能测试</li>
+</ul>
+<p>6.验收测试和安装测试</p>
+<ul>
+<li>验收测试的目的是向未来的用户表明系统能够像预定要求那样工作，验证软件的功能和性能如同用户所合理期待的那样</li>
+<li>安装测试是指按照软件产品安装手册或相应的文档，在一个和用户使用该产品完全一样的环境中或相当于用户使用环境中，进行一步一步的安装操作性的测试 </li>
+</ul>
+<p>7.α、β测试  和 在线测试</p>
+<p>8.主动测试和被动测试</p>
+<ul>
+<li>测试人员主动向被测试对象发送请求、或借助数据、事件驱动被测试对象的行为，从而验证被测试对象的反应或输出结果</li>
+<li>测试人员不干预产品的运行，而是被动地监控产品在实际环境中运行，通过一定的被动机制来获得系统运行的数据，包括输入、输出数据</li>
+</ul>
+<p>9.回归测试、冒烟测试和随机测试</p>
+<ul>
+<li>对软件的新版本测试时，重复执行上一个版本测试时的用例</li>
+<li>对新版本进行系统大规模的测试之前，先验证一下软件的基本功能是否实现，是否具备可测性</li>
+<li>指所有的输入数据都是随机生成的，其目的是模拟用户的真实操作，并发现一些边缘性错误</li>
+</ul>
+<p><img src="/2019/09/23/软件测试技术/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%88%AB.png" alt="软件测试类别"></p>
+<blockquote>
+<p>二、软件测试过程模型</p>
+</blockquote>
+<p>1.V模型</p>
+<ul>
+<li>与软件开发的瀑布模型相对应</li>
+</ul>
+<p><img src="/2019/09/23/软件测试技术/V%E6%A8%A1%E5%9E%8B.png" alt="V模型"></p>
+<p>2.W模型:两个V字型模型</p>
+<ul>
+<li>两个V：开发过程、测试过程</li>
+<li>测试过程：静态+动态</li>
+</ul>
+<p><img src="/2019/09/23/软件测试技术/W%E6%A8%A1%E5%9E%8B.png" alt="W模型"></p>
+<p>3.X模型</p>
+<ul>
+<li>左边：单独程序片段编码与测试</li>
+<li>单独程序片段频繁交接，然后集成</li>
+<li>集成测试</li>
+<li>探索性测试：未计划的测试</li>
+</ul>
+<p><img src="/2019/09/23/软件测试技术/X%E6%A8%A1%E5%9E%8B.png" alt="X模型"></p>
+<p>4.H模型</p>
+<ul>
+<li>软件测试是一个独立的流程</li>
+<li>与其他流程并发进行</li>
+<li>“尽早准备，尽早执行”</li>
+</ul>
+<p><img src="/2019/09/23/软件测试技术/H%E6%A8%A1%E5%9E%8B.png" alt="H模型"></p>
 
       
     </div>
@@ -355,8 +513,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/22/java-红黑树/" rel="next" title="java-红黑树">
-                <i class="fa fa-chevron-left"></i> java-红黑树
+              <a href="/2019/09/22/java-HashMap/" rel="next" title="java-HashMap">
+                <i class="fa fa-chevron-left"></i> java-HashMap
               </a>
             
           </div>
@@ -364,10 +522,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/23/软件测试技术/" rel="prev" title="软件测试技术">
-                软件测试技术 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

@@ -81,19 +81,20 @@
 
 
 
-<meta name="description" content="title: java-I/Odate: 2019-08-14 14:24:30tags: 2019.09.19  一.文件系统  1.定义：操作系统在储存设备上组织文件的方法。 2.组成：文件系统的接口、对对象操纵和管理的软件集合、对象及属性。  二.分布式文件系统  1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。 2.基于C/S模式 3.设计需要考虑什么问题(">
+<meta name="description" content="2019.09.19  一.文件系统  1.定义：操作系统在储存设备上组织文件的方法。 2.组成：文件系统的接口、对对象操纵和管理的软件集合、对象及属性。  二.分布式文件系统  1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。 2.基于C/S模式 3.设计需要考虑什么问题  系统架构如何设计—主从模式 文件如何拆分 元数据怎么管理 如何容错 故障自动检测 节点动态">
 <meta property="og:type" content="article">
 <meta property="og:title" content="云计算">
 <meta property="og:url" content="http://yoursite.com/2019/09/22/云计算/index.html">
 <meta property="og:site_name" content="Blog for 汤洪">
-<meta property="og:description" content="title: java-I/Odate: 2019-08-14 14:24:30tags: 2019.09.19  一.文件系统  1.定义：操作系统在储存设备上组织文件的方法。 2.组成：文件系统的接口、对对象操纵和管理的软件集合、对象及属性。  二.分布式文件系统  1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。 2.基于C/S模式 3.设计需要考虑什么问题(">
+<meta property="og:description" content="2019.09.19  一.文件系统  1.定义：操作系统在储存设备上组织文件的方法。 2.组成：文件系统的接口、对对象操纵和管理的软件集合、对象及属性。  二.分布式文件系统  1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。 2.基于C/S模式 3.设计需要考虑什么问题  系统架构如何设计—主从模式 文件如何拆分 元数据怎么管理 如何容错 故障自动检测 节点动态">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/Users/TH(LM)/Desktop/%E4%BA%91%E8%AE%A1%E7%AE%97/GFS%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png">
-<meta property="og:updated_time" content="2019-09-22T08:27:18.618Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/GFS%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/MapReduce%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6.png">
+<meta property="og:updated_time" content="2019-09-24T14:38:00.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云计算">
-<meta name="twitter:description" content="title: java-I/Odate: 2019-08-14 14:24:30tags: 2019.09.19  一.文件系统  1.定义：操作系统在储存设备上组织文件的方法。 2.组成：文件系统的接口、对对象操纵和管理的软件集合、对象及属性。  二.分布式文件系统  1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。 2.基于C/S模式 3.设计需要考虑什么问题(">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/22/云计算/Users/TH(LM)/Desktop/%E4%BA%91%E8%AE%A1%E7%AE%97/GFS%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png">
+<meta name="twitter:description" content="2019.09.19  一.文件系统  1.定义：操作系统在储存设备上组织文件的方法。 2.组成：文件系统的接口、对对象操纵和管理的软件集合、对象及属性。  二.分布式文件系统  1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。 2.基于C/S模式 3.设计需要考虑什么问题  系统架构如何设计—主从模式 文件如何拆分 元数据怎么管理 如何容错 故障自动检测 节点动态">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/22/云计算/GFS%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png">
 
 
 
@@ -306,8 +307,7 @@
       
 
       
-        <p>title: java-I/O<br>date: 2019-08-14 14:24:30<br>tags:</p>
-<p>2019.09.19</p>
+        <p>2019.09.19</p>
 <blockquote>
 <p>一.文件系统</p>
 </blockquote>
@@ -318,18 +318,33 @@
 </blockquote>
 <p>1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。</p>
 <p>2.基于C/S模式</p>
-<p>3.设计需要考虑什么问题<br>(1)系统架构如何设计—主从模式<br>(2)文件如何拆分<br>(3)元数据怎么管理<br>(4)如何容错<br>(5)故障自动检测<br>(6)节点动态管理</p>
+<p>3.设计需要考虑什么问题</p>
+<ul>
+<li>系统架构如何设计—主从模式</li>
+<li>文件如何拆分</li>
+<li>元数据怎么管理</li>
+<li>如何容错</li>
+<li>故障自动检测</li>
+<li>节点动态管理</li>
+</ul>
 <p>4.实例—Google文件系统：GFS（Client+Master+Chunk）</p>
 <p>（1）系统架构</p>
-<p><img src="/2019/09/22/云计算/Users/TH(LM)/Desktop/%E4%BA%91%E8%AE%A1%E7%AE%97/GFS%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png" alt="GFS的系统架构"></p>
+<p><img src="/2019/09/22/云计算/GFS%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png" alt="GFS的系统架构"></p>
 <p>(2)实现机制</p>
-<p>​      *客户端首先访问Master节点，获取交互的Chunk Server信息，然后访问这些Chunk Server，完成数据存取工作。这种设计方法实现了控制流和数据流的分离。</p>
-<p>​      *Client与Master之间只有控制流，而无数据流，极大地降低了Master的负载。</p>
-<p>​      *Client与Chunk Server之间直接传输数据流，同时由于文件被分成多个Chunk进行分布式存储，Client可以同时访问多个Chunk Server，从而使得整个系统的I/O高度并行，系统整体性能得到提高。 </p>
+<ul>
+<li>客户端首先访问Master节点，获取交互的Chunk Server信息，然后访问这些Chunk Server，完成数据存取工作。这种设计方法实现了控制流和数据流的分离。</li>
+<li>Client与Master之间只有控制流，而无数据流，极大地降低了Master的负载。</li>
+<li>Client与Chunk Server之间直接传输数据流，同时由于文件被分成多个Chunk进行分布式存储，Client可以同时访问多个Chunk Server，从而使得整个系统的I/O高度并行，系统整体性能得到提高。 </li>
+</ul>
 <p>(3)特点</p>
-<p>​         采用中心服务器模式</p>
-<p>​         不缓存数据</p>
-<p>​         在用户态下实现</p>
+<ul>
+<li><p>采用中心服务器模式</p>
+</li>
+<li><p>不缓存数据</p>
+</li>
+<li><p>在用户态下实现</p>
+</li>
+</ul>
 <p>(4)容错机制</p>
 <p>—–》》》Master容错《《《—–</p>
 <p>Master发生故障时，在磁盘数据保存完好的情况下，可以迅速恢复一下元数据。并且为方式彻底死机，还提供了Master远程实时备份。</p>
@@ -343,12 +358,45 @@
 <p>4.每一个文件被划分为多个Chunk（默认大小64MB–对于Google而言）。</p>
 <p>5.采用校验</p>
 <p>(5)系统管理技术</p>
-<p>​     大规模集群安装技术</p>
-<p>​     故障检测技术</p>
-<p>​     节点动态加入技术</p>
-<p>​     节能技术</p>
-<p>5.GFS采用master服务器的原因<br>      如果全部用户交给master服务器存储，负载过大，master服务器成为限制。</p>
+<ul>
+<li>大规模集群安装技术</li>
+<li>故障检测技术</li>
+<li>节点动态加入技术</li>
+<li>节能技术</li>
+</ul>
+<p>5.GFS采用master服务器的原因：如果全部用户交给master服务器存储，负载过大，master服务器成为限制。</p>
 <p>6.文件系统的校验码—-副本经过多次复制和传输，防止出错。</p>
+<blockquote>
+<p>三、分布式数据处理MapReduce</p>
+</blockquote>
+<p>1.产生背景</p>
+<ul>
+<li>封装了并行处理、容错处理、本地化计算、负载均衡等细节，还提供了一个简单而强大的接口。</li>
+<li>把对数据集的大规模操作，分发给一个主节点管理下的各分节点共同完成，通过这种方式实现任务的可靠执行与容错机制。</li>
+</ul>
+<p>2.编程模型</p>
+<ul>
+<li>Map函数：对一部分原始数据进行制定的操作，，相互独立，可以并行</li>
+<li>Reduce函数：对Map函数产生的部分结果进行合并</li>
+<li>Map: (in_key, in_value) -&gt; {(keyj, valuej) | j = 1…k}<br>Reduce: (key, [value1,…,valuem]) -&gt; (key, final_value) </li>
+</ul>
+<p>3.实现机制</p>
+<p><img src="/2019/09/22/云计算/MapReduce%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6.png" alt="MapReduce实现机制"></p>
+<ul>
+<li>MapReduce函数首先把输入文件分成M块</li>
+<li>分派的执行程序中有一个主控程序Master</li>
+<li>一个被分配了Map任务的Worker读取并处理相关的输入块</li>
+<li>这些缓冲到内存的中间结果将被定时写到本地硬盘，这些数据通过分区函数分成R个区</li>
+<li>当Master通知执行Reduce的Worker关于中间&lt;key,value&gt;对的位置时，它调用远程过程，从Map Worker的本地硬盘上读取缓冲的中间数据</li>
+<li>Reduce Worker根据每一个唯一中间key来遍历所有的排序后的中间数据，并且把key和相关的中间结果值集合传递给用户定义的Reduce函数</li>
+<li>当所有的Map任务和Reduce任务都完成的时候，Master激活用户程序</li>
+</ul>
+<p>4.容错机制—-重新执行失效地方</p>
+<ul>
+<li>Master失效：设置检查点（Master失效则需要重新开始）</li>
+<li>Worker失效：Master-&gt;周期ping-&gt;Worker(若失效这转移到其他Worker)</li>
+</ul>
+<p>5.案例分析—通过MapReduce完成排序工作</p>
 
       
     </div>
@@ -453,7 +501,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
