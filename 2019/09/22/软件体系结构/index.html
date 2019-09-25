@@ -90,7 +90,13 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E8%A7%86%E5%9B%BE.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E5%9B%BE.png">
-<meta property="og:updated_time" content="2019-09-23T14:24:46.383Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E6%89%A7%E8%A1%8C%E8%80%85%E4%B8%8E%E7%94%A8%E4%BE%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/执行者之间的泛化关系.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/blog/blog/source/_posts/软件体系结构/用例之间的包含关系.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E7%94%A8%E4%BE%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E6%89%A9%E5%B1%95%E5%85%B3%E7%B3%BB.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/用例之间的泛化关系.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E7%94%A8%E4%BE%8B%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9B%BE.png">
+<meta property="og:updated_time" content="2019-09-25T15:20:54.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件体系结构">
 <meta name="twitter:description" content="2019.09.11 1.开闭原则：对扩展开放，对修改关闭。 2.里氏替换原则：派生类型（子类）必须能够替换掉它们的基类型（父类）。 2019.09.16  第一章——软件体系结构的定义  1.软件体系结构包括构件、连接件和约束（配置）三大要素。 （1）构件是可预制和可重用的软件部件，是组成体系结构的基本计算单元或数据存储单元，可以是一个处理过程或者是数据元素。用于实现计算和状态的单元。可简单可复">
@@ -484,6 +490,93 @@ fireXXX(){<br>    al.ap();<br>}
 <li>使用一根直线表示</li>
 <li>称为关联关系或者通信关系</li>
 </ul>
+<p><img src="/2019/09/22/软件体系结构/%E6%89%A7%E8%A1%8C%E8%80%85%E4%B8%8E%E7%94%A8%E4%BE%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB.png" alt="执行者与用例之间的关联关系"></p>
+<p>（4）执行者之间的泛化关系（继承）</p>
+<img src="/2019/09/22/软件体系结构/执行者之间的泛化关系.png" alt="执行者之间的泛化关系" style="zoom:80%;">
+
+
+
+
+
+<p>(5)用例之间的包含关系&lt;<include>&gt;（必须）</include></p>
+<ul>
+<li>多个用例之间都有的公共行为</li>
+</ul>
+<img src="/2019/09/22/软件体系结构/blog\blog\source\_posts\软件体系结构\用例之间的包含关系.png" alt="1569417434228" style="zoom: 50%;">
+
+
+
+<p>（6）用例之间的扩展关系&lt;<enxtend>&gt;（可以、基本路径之外额外的操作路径）</enxtend></p>
+<ul>
+<li>在基用例上添加新的行为（注意扩展点）</li>
+</ul>
+<p><img src="/2019/09/22/软件体系结构/%E7%94%A8%E4%BE%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E6%89%A9%E5%B1%95%E5%85%B3%E7%B3%BB.png" alt="用例之间的扩展关系"></p>
+<p>(7)用例之间的泛化关系（一般很少使用）</p>
+<ul>
+<li>抽象为父用例</li>
+</ul>
+<img src="/2019/09/22/软件体系结构/用例之间的泛化关系.png" alt="用例之间的泛化关系" style="zoom: 50%;">
+
+
+
+
+
+<p>(8)书写用例文档</p>
+<ul>
+<li><p>用例编号</p>
+</li>
+<li><p>用例名</p>
+</li>
+<li><p>执行者</p>
+</li>
+<li><p>前置条件:开始用例前所必需的系统及其环境的状态(用例开始前系统必须能检测到)</p>
+</li>
+<li><p>后置条件：用例成功结束后系统应该具备的状态</p>
+</li>
+<li><p>涉众利益（一般执行者都是涉众）</p>
+</li>
+<li><p>基本路径       </p>
+<ul>
+<li>1…..××××</li>
+<li>2……××××</li>
+<li>3…..××××</li>
+<li>基本原则：<ul>
+<li>只书写“可观测”的（说人话）</li>
+<li>使用主动语句</li>
+<li>句子必须以执行者或系统作为主语</li>
+<li>每一句都要朝目标迈进</li>
+<li>分支和循环<ul>
+<li>分支：放到拓展路径</li>
+<li>循环：直接描述</li>
+</ul>
+</li>
+<li>不要涉及界面细节</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>扩展路径（注意：替换路径、异常路径）</p>
+<ul>
+<li>2a.××××：<ul>
+<li>2a1….×××××</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>补充约束（可以直接放在用例中，也可以单独集中另外的文档，用用例文档指向）</p>
+<ul>
+<li><p>字段列表</p>
+</li>
+<li><p>业务规则</p>
+</li>
+<li><p>非功能需求</p>
+</li>
+<li><p>设计约束</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/09/22/软件体系结构/%E7%94%A8%E4%BE%8B%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9B%BE.png" alt="用例文档类图"></p>
 
       
     </div>
