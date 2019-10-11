@@ -96,7 +96,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E7%94%A8%E4%BE%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E6%89%A9%E5%B1%95%E5%85%B3%E7%B3%BB.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/用例之间的泛化关系.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E7%94%A8%E4%BE%8B%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9B%BE.png">
-<meta property="og:updated_time" content="2019-09-25T15:20:54.999Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E5%A4%8D%E5%90%88%E7%8A%B6%E6%80%81.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/同步条.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E7%8A%B6%E6%80%81%E5%9B%BE%E4%B8%8E%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:updated_time" content="2019-10-09T15:56:48.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件体系结构">
 <meta name="twitter:description" content="2019.09.11 1.开闭原则：对扩展开放，对修改关闭。 2.里氏替换原则：派生类型（子类）必须能够替换掉它们的基类型（父类）。 2019.09.16  第一章——软件体系结构的定义  1.软件体系结构包括构件、连接件和约束（配置）三大要素。 （1）构件是可预制和可重用的软件部件，是组成体系结构的基本计算单元或数据存储单元，可以是一个处理过程或者是数据元素。用于实现计算和状态的单元。可简单可复">
@@ -577,6 +580,30 @@ fireXXX(){<br>    al.ap();<br>}
 </li>
 </ul>
 <p><img src="/2019/09/22/软件体系结构/%E7%94%A8%E4%BE%8B%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9B%BE.png" alt="用例文档类图"></p>
+<blockquote>
+<p>四、状态图</p>
+</blockquote>
+<p>1.定义：用来描述一个特定对象的所有可能状态及其引起状态转移的事件</p>
+<p>2.组成元素：</p>
+<ul>
+<li>初始状态：实心圆点</li>
+<li>终止状态：同心圆</li>
+<li>状态框：上格—状态名称；下格—活动</li>
+<li>连线：转移Transition—事件名 [条件] / 动作名（每一部分都可省略）</li>
+</ul>
+<p>3.高级技巧</p>
+<ul>
+<li>复合状态：将若干状态组织在一起可以得到一个复合状态</li>
+</ul>
+<p><img src="/2019/09/22/软件体系结构/%E5%A4%8D%E5%90%88%E7%8A%B6%E6%80%81.png" alt="复合状态"></p>
+<ul>
+<li>带同步条的状态图</li>
+</ul>
+<img src="/2019/09/22/软件体系结构/同步条.png" alt="同步条" style="zoom:50%;">
+
+<p>4.状态图与状态模式</p>
+<p><img src="/2019/09/22/软件体系结构/%E7%8A%B6%E6%80%81%E5%9B%BE%E4%B8%8E%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F.png" alt="状态图与状态模式"></p>
+<p>实现接口并注入环境</p>
 
       
     </div>
@@ -681,7 +708,7 @@ fireXXX(){<br>    al.ap();<br>}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
