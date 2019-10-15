@@ -100,7 +100,13 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/健壮性边界值测试.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/因果图符号.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/因果图约束符号.png">
-<meta property="og:updated_time" content="2019-09-29T15:24:14.609Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/循环测试-简单循环.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/%E5%BE%AA%E7%8E%AF%E6%B5%8B%E8%AF%95-%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/循环测试-串行连接的循环.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/用例数估算.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/练习.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95.png">
+<meta property="og:updated_time" content="2019-10-14T15:10:31.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件测试技术">
 <meta name="twitter:description" content="第二章—–软件测试概述  1.软件测试定义的两面性  正向思维－验证软件正常工作 逆向思维－假定软件有错误  2.软件测试定义  Bill Hetzel博士 软件测试就是一系列活动，这些活动是为了评估一个程序或软件系统的特性与能力，并确定是否达到了预期效果。   IEEE 使用人工或自动手段，来运行或测试某个系统的过程。其目的在于检验它是否满足规定的需求或弄清预期结果与实际结果之间的差别。">
@@ -656,6 +662,108 @@
 </ul>
 <p>8.正交实验法</p>
 <p>9.正交表法</p>
+<blockquote>
+<p>七、白盒测试</p>
+</blockquote>
+<blockquote>
+<p>1.逻辑覆盖测试法</p>
+</blockquote>
+<p>1.语句覆盖（SC）</p>
+<ul>
+<li>程序中的每个可执行语句至少被执行一次</li>
+</ul>
+<p>2.判定覆盖（DC）</p>
+<ul>
+<li>程序中每个判断的取真分支和取假分支至少经历一次，即判断真假值均曾被满足</li>
+</ul>
+<p>3.条件覆盖（CC）</p>
+<ul>
+<li>每个判断中每个条件的可能取值至少满足一次</li>
+</ul>
+<p>4.判定覆盖条件（CDC）</p>
+<ul>
+<li>判定和条件覆盖设计方法的交集</li>
+</ul>
+<p>5.条件组合覆盖（MCC）</p>
+<ul>
+<li>判断中每个条件的所有可能至少出现一次，并且每个判断本身的判定结果也至少出现一次。</li>
+</ul>
+<p>6.修正条件/判定覆盖</p>
+<ul>
+<li>每个判定的所有可能结果至少能取值一次；</li>
+<li>判定中的每个条件的所有可能结果至少取值一次；</li>
+<li>一个判定中的每个条件曾经独立地对判定的结果产生影响；</li>
+<li>每个入口和出口至少执行一次</li>
+</ul>
+<p>7.性质</p>
+<ul>
+<li>满足判定覆盖-&gt;满足语句覆盖</li>
+<li>判定覆盖本身不涵盖对条件覆盖的要求</li>
+<li>满足条件覆盖不一定满足判定覆盖</li>
+<li>判定-条件覆盖是判定和条件覆盖设计方法的交际，同时满足判定覆盖和条件覆盖</li>
+<li>满足条件组合覆盖，一定满足判定覆盖、条件覆盖、条件判定组合覆盖</li>
+<li>条件组合覆盖所覆盖的路径有限</li>
+</ul>
+<blockquote>
+<p>2.基本路径测试法</p>
+</blockquote>
+<p>1.设计过程</p>
+<ul>
+<li>依据代码绘制流程图（控制流图）</li>
+<li>确定控制流图的圈复杂度（cyclomatic complexity ）</li>
+<li>确定线性独立路径的基本集合( basis set )</li>
+<li>设计测试用例覆盖每条基本路径</li>
+</ul>
+<p>2.原则（化简）</p>
+<ul>
+<li>控制流图的一个结点，表示一个或多个无分支的语句或源程序语句。一组顺序处理框可以映射为单一结点。</li>
+<li>菱形框表示判定条件，内无复合条件</li>
+<li>在选择或者是多分支结构中分支的汇聚处，没有执行语句也添加一个汇聚节点。</li>
+<li>如果判断中的条件表达式是复合条件，即条件表达式是由一个或多个逻辑运算符（or, and, nor）连接的逻辑表达式，则需要改变复合条件的判断为一系列只有单个条件的嵌套的判断。</li>
+<li>补：只考虑1次和0次两种情况</li>
+</ul>
+<p>3.圈复杂度—复杂度越高，出错的概率越大</p>
+<ul>
+<li><p>V(G) = 区域数量(由节点、连线包围的区域，包括图形外部区域)</p>
+</li>
+<li><p>V(G) = 连线数量 - 节点数量 + 2</p>
+</li>
+<li><p>V(G) = 简单可预测节点数量 + 1</p>
+</li>
+</ul>
+<blockquote>
+<p>3.循环测试</p>
+</blockquote>
+<p>1.简单循环</p>
+<img src="/2019/09/23/软件测试技术/循环测试-简单循环.png" alt="循环测试-简单循环" style="zoom:50%;">
+
+<p>2.嵌套循环</p>
+<p><img src="/2019/09/23/软件测试技术/%E5%BE%AA%E7%8E%AF%E6%B5%8B%E8%AF%95-%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF.png" alt="循环测试-嵌套循环"></p>
+<p>3.串行连接的循环</p>
+<img src="/2019/09/23/软件测试技术/循环测试-串行连接的循环.png" alt="循环测试-串行连接的循环" style="zoom:50%;">
+
+<p>4.其他非结构循环—重新设计</p>
+<p>5.用例数估算</p>
+<ul>
+<li><p>顺序型——构成串行操作</p>
+</li>
+<li><p>选择型——构成分支操作</p>
+</li>
+<li><p>重复型——构成循环操作</p>
+<img src="/2019/09/23/软件测试技术/用例数估算.png" alt="用例数估算" style="zoom: 50%;">
+
+
+
+</li>
+</ul>
+<p>6.练习</p>
+<img src="/2019/09/23/软件测试技术/练习.png" alt="练习" style="zoom:50%;">
+
+<p>3*(1+3 *5)=48</p>
+<blockquote>
+<p>4.小结</p>
+</blockquote>
+<p><img src="/2019/09/23/软件测试技术/%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95.png" alt="白盒测试"></p>
 
       
     </div>

@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/26/算法/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81_1.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/26/算法/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81_2.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/26/算法/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:updated_time" content="2019-10-09T10:09:53.613Z">
+<meta property="og:updated_time" content="2019-10-14T16:32:01.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法">
 <meta name="twitter:description" content="一、排序   1.选择排序  1.原理：  首先，找到数组中最小的那个元素  其次，将它和数组的第一个元素交换位置   再次，在剩下的元素中找到最下的元素，将它与数组中的第二个元素交换位置，如此反复   2.效率：对于长度为N的数组，选择排序需要大约(N^2)/2次比较和N次交换 3.特点  运行时间和输入无关（某些时候是缺点） 数据移动最少  4.代码实现   2.插入排序  1.原理：将数组">
@@ -430,12 +430,34 @@
 <blockquote>
 <p>8.优先队列</p>
 </blockquote>
-<p>1.数组实现</p>
-<p>2.链表实现    </p>
-<p>3.二叉堆实现（重点）</p>
+<p>1.初级实现</p>
+<ul>
+<li>数组实现<ul>
+<li>无序：删除最大最大元素时将最大元素好边界元素交换</li>
+<li>有序：insert()方法插入时有序</li>
+</ul>
+</li>
+<li>链表实现    </li>
+<li>二叉堆实现（重点）<ul>
+<li>将新元素添加在数组最后，然后上浮到合适位置</li>
+<li>删除最大元素，将最后一个元素放到最顶端，汤洪下沉到合适位置</li>
+<li>可以使用多叉堆</li>
+</ul>
+</li>
+<li>堆的算法<ul>
+<li>由下至上的堆有序化（上浮）</li>
+<li>由上至下的堆有序化（下沉）</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>9.堆排序</p>
 </blockquote>
+<p>1.构造堆</p>
+<ul>
+<li>从左至右遍历数组使用上浮操作</li>
+<li>从右至左使用下沉操作</li>
+</ul>
 <blockquote>
 <p>二、查找</p>
 </blockquote>

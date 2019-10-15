@@ -99,7 +99,9 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E5%A4%8D%E5%90%88%E7%8A%B6%E6%80%81.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/同步条.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E7%8A%B6%E6%80%81%E5%9B%BE%E4%B8%8E%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F.png">
-<meta property="og:updated_time" content="2019-10-09T15:56:48.230Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/活动图.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/顺序图.png">
+<meta property="og:updated_time" content="2019-10-14T15:19:35.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件体系结构">
 <meta name="twitter:description" content="2019.09.11 1.开闭原则：对扩展开放，对修改关闭。 2.里氏替换原则：派生类型（子类）必须能够替换掉它们的基类型（父类）。 2019.09.16  第一章——软件体系结构的定义  1.软件体系结构包括构件、连接件和约束（配置）三大要素。 （1）构件是可预制和可重用的软件部件，是组成体系结构的基本计算单元或数据存储单元，可以是一个处理过程或者是数据元素。用于实现计算和状态的单元。可简单可复">
@@ -604,6 +606,83 @@ fireXXX(){<br>    al.ap();<br>}
 <p>4.状态图与状态模式</p>
 <p><img src="/2019/09/22/软件体系结构/%E7%8A%B6%E6%80%81%E5%9B%BE%E4%B8%8E%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F.png" alt="状态图与状态模式"></p>
 <p>实现接口并注入环境</p>
+<blockquote>
+<p>五、活动图</p>
+</blockquote>
+<p>1.定义：描述工作流</p>
+<p>2.组成元素</p>
+<ul>
+<li>起始活动：实心圆饼（只有一个）</li>
+<li>终止活动：实心圆点加小圆圈（0个或多个）异常—叉叉</li>
+<li>活动：圆角矩形</li>
+<li>活动之间的转移：箭头（可能带有守护条件）</li>
+<li>判定：菱形活动</li>
+<li>对象流：使用带箭头的虚线</li>
+<li>对象：矩形（方括号代表对象此时的状态）</li>
+</ul>
+<img src="/2019/09/22/软件体系结构/活动图.png" alt="活动图" style="zoom: 50%;">
+
+<ul>
+<li>同步条：可以表示分支或者合并</li>
+<li>泳道：划分负责活动的对象</li>
+</ul>
+<blockquote>
+<p>六、顺序图</p>
+</blockquote>
+<p>1.定义：用于确认和丰富一个使用情境的逻辑</p>
+<p>2.元素：</p>
+<ul>
+<li>横向轴：个独立对象的类元角色</li>
+<li>纵向虚线：生命线</li>
+</ul>
+<img src="/2019/09/22/软件体系结构/顺序图.png" alt="顺序图" style="zoom:50%;">
+
+<ul>
+<li>矩形：对象</li>
+<li>长条矩形：激活</li>
+<li>箭头：消息（对象之间的通信）<ul>
+<li>调用消息：对应激活</li>
+<li>发送消息：没有对应激活框，不会引起为他对象活动</li>
+<li>返回消息：虚线</li>
+<li>创建消息</li>
+<li>返回消息</li>
+<li>同步消息</li>
+<li>异步消息</li>
+</ul>
+</li>
+<li>交互片段：一个复杂的顺序图可以划分为几个小块，每一个小块称为一个交互片段<ul>
+<li>表示：由一个大方框包围，其名称显示在方框左上角的间隔区内，表示该顺序图的信息</li>
+<li>常用操作：<ul>
+<li>alt:多条路径，条件为真时执行。</li>
+<li>opt:任选，仅当条件为真时执行。</li>
+<li>par:并行，每一片段都并发执行。</li>
+<li>loop:循环，片段可多次执行。</li>
+<li>critical:临界区，只能有一个线程对它立即执行。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>3.绘制步骤</p>
+<ul>
+<li>确定参与交互的执行者</li>
+<li>确定与执行者直接交互的对象</li>
+<li>确定与交互相关的全部对象（顺藤摸瓜）</li>
+</ul>
+<p>4.绘制技巧</p>
+<ul>
+<li>如果需要考察单个用例内部多个对象的行为可以使用顺序图；</li>
+<li>如果需要考察单个对象的行为就需要使用状态图；</li>
+<li>如果需要考察跨用例或者跨线程的行为就需要考虑使用活动图。</li>
+<li>理论上需要为每一个用例创建一个顺序图，但是如果一个用例的交互对象很简单可以不需要创建顺序图。</li>
+<li>以用例为单位创建顺序图</li>
+</ul>
+<blockquote>
+<p>UML构造设计模型</p>
+</blockquote>
+<blockquote>
+<p>七.类图</p>
+</blockquote>
 
       
     </div>
