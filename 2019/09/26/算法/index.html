@@ -92,7 +92,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/26/算法/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81_1.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/26/算法/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81_2.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/26/算法/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0.png">
-<meta property="og:updated_time" content="2019-10-14T16:32:01.776Z">
+<meta property="og:image" content="https://xiaoyue26.github.io/images/2018-04/a3.jpg">
+<meta property="og:image" content="https://xiaoyue26.github.io/images/2018-04/a4.jpg">
+<meta property="og:image" content="https://xiaoyue26.github.io/images/2018-04/a5.jpg">
+<meta property="og:updated_time" content="2019-10-28T07:30:27.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法">
 <meta name="twitter:description" content="一、排序   1.选择排序  1.原理：  首先，找到数组中最小的那个元素  其次，将它和数组的第一个元素交换位置   再次，在剩下的元素中找到最下的元素，将它与数组中的第二个元素交换位置，如此反复   2.效率：对于长度为N的数组，选择排序需要大约(N^2)/2次比较和N次交换 3.特点  运行时间和输入无关（某些时候是缺点） 数据移动最少  4.代码实现   2.插入排序  1.原理：将数组">
@@ -440,7 +443,7 @@
 <li>链表实现    </li>
 <li>二叉堆实现（重点）<ul>
 <li>将新元素添加在数组最后，然后上浮到合适位置</li>
-<li>删除最大元素，将最后一个元素放到最顶端，汤洪下沉到合适位置</li>
+<li>删除最大元素，将最后一个元素放到最顶端，下沉到合适位置</li>
 <li>可以使用多叉堆</li>
 </ul>
 </li>
@@ -458,29 +461,295 @@
 <li>从左至右遍历数组使用上浮操作</li>
 <li>从右至左使用下沉操作</li>
 </ul>
+<p>2.下沉排序</p>
+<p>3.先下沉后上浮</p>
 <blockquote>
 <p>二、查找</p>
 </blockquote>
+<p>1.分类</p>
+<ul>
+<li>静态查找</li>
+<li>动态查找：指查找表中有删除和插入操作的表</li>
+<li>无序查找</li>
+<li>有序查找</li>
+</ul>
+<p>2.平均查找长度</p>
+<ul>
+<li>ASL=Pi*Ci求和<ul>
+<li>Pi：查找表中第i个数据元素的概率</li>
+<li>Ci：找到第i个元素是已经比较过的次数</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>1.顺序查找</p>
 </blockquote>
+<p>1.基本思想</p>
+<ul>
+<li>从数据的第一个元素开始，依次比较，直到找到目标数据或查找失败。<ul>
+<li>从表中的第一个元素开始，依次与关键字比较。</li>
+<li>若某个元素匹配关键字，则查找成功。</li>
+<li>若查找到最后一个元素还未匹配关键字，则查找失败</li>
+</ul>
+</li>
+<li>时间复杂度<ul>
+<li>平均关键字匹配次数为表长的一半，其时间复杂度为O(n)。 </li>
+</ul>
+</li>
+<li>优点<ul>
+<li>对于要查找的结构没有要求</li>
+<li>算法简单</li>
+<li>既适用于顺序存储结构，也适用于链接存储结构</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>时间复杂度大</li>
+<li>数据规模大时效率低</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>2.二分查找</p>
 </blockquote>
+<p>P.S.元素必须有序</p>
+<p>1.基本思想</p>
+<ul>
+<li>用给定值k先与中间结点的关键字比较，中间结点把线形表分成两个子表，若相等则查找成功；若不相等，再根据k与该中间结点关键字的比较结果确定下一步查找哪个子表，这样递归进行，直到查找到或查找结束发现表中没有这样的结点。 </li>
+</ul>
+<p>2.复杂度</p>
+<ul>
+<li><p>最坏情况</p>
+<ul>
+<li>关键词比较次数 </li>
+</ul>
+<p>$$<br>log_2(n+1)<br>$$</p>
+<ul>
+<li>期望时间复杂度<br>$$<br>O(log_2n)<br>$$</li>
+</ul>
+</li>
+</ul>
 <blockquote>
-<p>3.二分查找树</p>
+<p>3.插值查找</p>
+</blockquote>
+<p>1.属于有序查找</p>
+<p>2.基于二分查找</p>
+<p>3.改进查找点： mid=low+(key-a[low])/(a[high]-a[low])*(high-low)</p>
+<p>4.复杂度分析<br>$$<br>O(log_2(log_2n))<br>$$</p>
+<blockquote>
+<p>4.斐波拉契查找</p>
+</blockquote>
+<p>P.S.黄金分割、有序查找</p>
+<p>1.基本思想：二分查找的提升算法, 通过运用黄金比例的概念在数列中选择查找点进行查找 </p>
+<p>2.原理</p>
+<p>3..复杂度(最坏情况下)</p>
+<ul>
+<li><p>时间复杂度<br>$$<br>O(log_2n)<br>$$</p>
+</li>
+<li><p>期望复杂度<br>$$<br>O(log_2n)<br>$$</p>
+</li>
+</ul>
+<blockquote>
+<p>5.二叉查找树</p>
+</blockquote>
+<p>1.基本思想： 先对待查找的数据进行生成树，确保树的左分支的值小于右分支的值，然后在就行和每个节点的父节点比较大小，查找最适合的范围 </p>
+<p>2.定义</p>
+<ul>
+<li>若任意节点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；</li>
+<li>若任意节点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；</li>
+<li>任意节点的左、右子树也分别为二叉查找树。</li>
+<li>没有键值相等的节点</li>
+</ul>
+<p>3.性质： <strong>对二叉查找树进行中序遍历，即可得到有序的数列。</strong> </p>
+<p>4.复杂度分析</p>
+<ul>
+<li>插入和查找：O(logn) </li>
+<li>最坏情况仍会有O(n)，原因是树没有保持平衡</li>
+</ul>
+<p>5.查找：将key和节点的key比较，如果小于，在left node节点查找，若大于，在right node节点查找</p>
+<ul>
+<li><p>递归实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">searchRec</span><span class="params">(TreeNode root ,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">				<span class="keyword">return</span> root;</span><br><span class="line">			<span class="keyword">if</span>(val&lt;root.value)</span><br><span class="line">				<span class="keyword">return</span> searchRec(root.left,val);</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(val&gt;root.value)</span><br><span class="line">				<span class="keyword">return</span> searchRec(root.right,val);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">return</span> root;<span class="comment">//不大于也不小于就是等于</span></span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>迭代实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">search</span><span class="params">(TreeNode root ,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">				<span class="keyword">return</span> root;</span><br><span class="line">			<span class="keyword">while</span>(root!=<span class="keyword">null</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(val&lt;root.value)</span><br><span class="line">					root=root.left;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(val&gt;root.value)</span><br><span class="line">					root=root.right;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">return</span> root;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> root;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<p>6.构造二叉查找树</p>
+<ul>
+<li><p>数据结构</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> value;</span><br><span class="line">	TreeNode parent;</span><br><span class="line">	TreeNode left;</span><br><span class="line">	TreeNode right;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(<span class="keyword">int</span> value, TreeNode parent, TreeNode left, TreeNode right)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value = value;</span><br><span class="line">		<span class="keyword">this</span>.parent = parent;</span><br><span class="line">		<span class="keyword">this</span>.left = left;</span><br><span class="line">		<span class="keyword">this</span>.right = right;</span><br><span class="line">	&#125;	 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>7.插入</p>
+<ul>
+<li><p>步骤</p>
+<ul>
+<li>若当前树为空，则插入的元素为根节点</li>
+<li>若插入的元素值小于根节点值，插入到左子树</li>
+<li>若插入的元素不小于根节点值，插入到右子树</li>
+<li>若相同值节点，插入失败</li>
+<li>要么向左，要么向右，直到找到空节点</li>
+</ul>
+</li>
+<li><p>实现</p>
+<ul>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">insertRec</span><span class="params">(TreeNode root,TreeNode x)</span></span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">				root=x;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(x.value&lt;root.value)</span><br><span class="line">				root.left=insertRec(root.left,  x);</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(x.value&gt;root.value)</span><br><span class="line">				root.right=insertRec(root.right,  x);</span><br><span class="line">			<span class="keyword">return</span> root;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>迭代</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">insert</span><span class="params">(TreeNode root,TreeNode x)</span></span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">				root=x;</span><br><span class="line">			TreeNode p=<span class="keyword">null</span>;<span class="comment">//需要记录父节点</span></span><br><span class="line">			<span class="keyword">while</span>(root!=<span class="keyword">null</span>)<span class="comment">//定位插入的位置</span></span><br><span class="line">			&#123;</span><br><span class="line">				p=root;<span class="comment">//记录父节点</span></span><br><span class="line">				<span class="keyword">if</span>(x.value&lt;root.value)</span><br><span class="line">					root=root.left;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					root=root.right;</span><br><span class="line">			&#125;</span><br><span class="line">			x.parent=p;<span class="comment">//定位到合适的页节点的空白处后，根据和父节点的大小比较插入合适的位置</span></span><br><span class="line">			<span class="keyword">if</span>(x.value&lt;p.value) </span><br><span class="line">				p.left=x;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(x.value&gt;p.value)</span><br><span class="line">				p.right=x;</span><br><span class="line">			<span class="keyword">return</span> root;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>8.删除</p>
+<ul>
+<li><p>步骤</p>
+<ul>
+<li>p为叶子节点，直接删除该节点，再修改其父节点的指针 (区分根节点与不是根节点)</li>
+<li>p为单支节点（即只有左子树或右子树）。让p的子树与p的父亲节点相连，删除p即可；（注意分是根节点和不是根节点） </li>
+<li>有两个孩子的情况，当前结点与左子树中最大的元素交换，然后删除当前结点。左子树最大的元素一定是叶子结点，交换后，当前结点即为叶子结点，删除参考没有孩子的情况。另一种方法是，当前结点与右子树中最小的元素交换，然后删除当前结点 </li>
+</ul>
+</li>
+<li><p>实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//BST删除节点</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(TreeNode root,TreeNode x)</span></span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">				<span class="keyword">return</span> ;</span><br><span class="line">			TreeNode p=<span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">while</span>(root!=<span class="keyword">null</span>)<span class="comment">//定位到需要删除的节点</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(x.value&lt;root.value)</span><br><span class="line">				&#123;</span><br><span class="line">					p=root;<span class="comment">//记录父节点</span></span><br><span class="line">					root=root.left;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(x.value&gt;root.value)</span><br><span class="line">				&#123;</span><br><span class="line">					p=root;<span class="comment">//记录父节点</span></span><br><span class="line">					root=root.right;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span><span class="comment">//找到啦</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(root.left==<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>)<span class="comment">//①待删除的是 叶子节点</span></span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">if</span>(p==<span class="keyword">null</span>)<span class="comment">//待删除的是根节点</span></span><br><span class="line">							root=<span class="keyword">null</span>;</span><br><span class="line">						<span class="keyword">else</span></span><br><span class="line">						&#123;</span><br><span class="line">							<span class="keyword">if</span>(p.left==root)</span><br><span class="line">								p.left=<span class="keyword">null</span>;</span><br><span class="line">							<span class="keyword">else</span> <span class="keyword">if</span>(p.right==root)</span><br><span class="line">								p.right=<span class="keyword">null</span>;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>)<span class="comment">//② 待删除的节点只有左孩子</span></span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">if</span>(p==<span class="keyword">null</span>)<span class="comment">//待删除的是根节点</span></span><br><span class="line">							root=root.left;</span><br><span class="line">						<span class="keyword">else</span></span><br><span class="line">						&#123;</span><br><span class="line">							 <span class="keyword">if</span>(p.left==root)<span class="comment">//待删除的本身是一个左孩子</span></span><br><span class="line">								 p.left=root.left;</span><br><span class="line">							 <span class="keyword">else</span> <span class="keyword">if</span>(p.right==root)</span><br><span class="line">								 p.right=root.left;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(root.left==<span class="keyword">null</span>&amp;&amp;root.right!=<span class="keyword">null</span>)<span class="comment">//② 待删除的节点只有右孩子</span></span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">if</span>(p==<span class="keyword">null</span>)<span class="comment">//待删除的是根节点</span></span><br><span class="line">							root=root.right;</span><br><span class="line">						<span class="keyword">else</span></span><br><span class="line">						&#123;</span><br><span class="line"> 							 <span class="keyword">if</span>(p.left==root)<span class="comment">//待删除的本身是一个左孩子</span></span><br><span class="line"> 								 p.left=root.right;</span><br><span class="line"> 							 <span class="keyword">else</span> <span class="keyword">if</span>(p.right==root)</span><br><span class="line"> 								 p.right=root.right;</span><br><span class="line"> 							 </span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span><span class="comment">//③待删除的节点即有左孩子又有右孩子    方法：得到待删除节点右子树的最小值，    </span></span><br><span class="line">					&#123;<span class="comment">//该最小值与待删除节点进行“ 值 ”交换，删除该最小值位置处的节点</span></span><br><span class="line">						TreeNode rMin=root.right; <span class="comment">//求待删除节点的后继节点,即待删除节点的右孩子的最小值(找到的后继节点肯定没有左孩子！！！)</span></span><br><span class="line">						TreeNode rMinP=<span class="keyword">null</span>;<span class="comment">//因为需要删除后继节点位置，所以需要记录父节点</span></span><br><span class="line">						<span class="keyword">while</span>(rMin!=<span class="keyword">null</span>)</span><br><span class="line">						&#123;</span><br><span class="line">							rMinP=rMin;</span><br><span class="line">							rMin=rMin.left;</span><br><span class="line">						&#125;</span><br><span class="line">						 <span class="keyword">int</span> rootVtemp=root.value;<span class="comment">//值交换</span></span><br><span class="line">						 root.value=rMin.value;</span><br><span class="line">						 rMin.value=rootVtemp;</span><br><span class="line">						 <span class="comment">//删除rMin位置的节点，此时此位置的值已是待删节点的值</span></span><br><span class="line">						 <span class="keyword">if</span>(rMinP.left==rMin)</span><br><span class="line">							 rMinP.left=rMin.right;</span><br><span class="line">						 <span class="keyword">else</span> <span class="keyword">if</span>(rMinP.right==rMin)</span><br><span class="line">							 rMinP.right=rMin.right;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">break</span>;<span class="comment">//找到后删了后就跳出while循环</span></span><br><span class="line">			&#125;</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>9.最大值与最小值</p>
+<ul>
+<li><p>最小值即最左的孩子 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求BST的最小值</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> TreeNode  <span class="title">getMin</span><span class="params">(TreeNode root)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">while</span>(root.left!=<span class="keyword">null</span>)</span><br><span class="line">			root=root.left;	 </span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>最大值即最右的孩子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求BST的最小值</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> TreeNode  <span class="title">getMin</span><span class="params">(TreeNode root)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">while</span>(root.left!=<span class="keyword">null</span>)</span><br><span class="line">			root=root.left;	 </span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>10.前驱和后继节点</p>
+<ul>
+<li><p>前驱节点： 小于该节点的所有节点中的最大值 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查找BST中某节点的前驱节点.即查找数据值小于该结点的最大结点。</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> TreeNode <span class="title">preNode</span><span class="params">(TreeNode x)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(x==<span class="keyword">null</span>)</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			<span class="comment">// 如果x存在左孩子，则"x的前驱结点"为 "以其左孩子为根的子树的最大结点"。</span></span><br><span class="line">		    <span class="keyword">if</span>(x.left!=<span class="keyword">null</span>)</span><br><span class="line">		    	<span class="keyword">return</span> getMax(x.left);</span><br><span class="line">		    <span class="comment">// 如果x没有左孩子。则x有以下两种可能：</span></span><br><span class="line">		    <span class="comment">// (01) x是"一个右孩子"，则"x的前驱结点"为 "它的父结点"。</span></span><br><span class="line">		    <span class="comment">// (02) x是"一个左孩子"，则 前驱节点为x的某一个祖先节点的父节点，而且该祖先节点是作为其父节点的右儿子</span></span><br><span class="line">		    TreeNode p=x.parent;</span><br><span class="line">		    <span class="keyword">while</span>(p!=<span class="keyword">null</span>&amp;&amp;p.left==x)</span><br><span class="line">		    &#123;</span><br><span class="line">		    	x=p;<span class="comment">//父节点置为新的x</span></span><br><span class="line">		    	p=p.parent;  <span class="comment">//父节点的父节点置为新的父节点</span></span><br><span class="line">		    &#125;</span><br><span class="line">		   <span class="keyword">return</span> p;	 </span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后继节点： 大于该节点的所有节点中的最小值 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查找BST中某节点的后继节点.即查找数据值大于该结点的最小结点。</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> TreeNode <span class="title">postNode</span><span class="params">(TreeNode x)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(x==<span class="keyword">null</span>)</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			<span class="comment">// 如果x存在右孩子，则"x的后继结点"为 "以其右孩子为根的子树的最小结点"。</span></span><br><span class="line">		    <span class="keyword">if</span>(x.left!=<span class="keyword">null</span>)</span><br><span class="line">		    	<span class="keyword">return</span> getMin(x.right);</span><br><span class="line">		    <span class="comment">// 如果x没有右孩子。则x有以下两种可能：</span></span><br><span class="line">		    <span class="comment">//  (01) x是"一个左孩子"，则"x的后继结点"为 "它的父结点"。</span></span><br><span class="line">		    <span class="comment">// (02) x是"一个右孩子"，则 前驱节点为x的某一个祖先节点的父节点，而且该祖先节点是作为其父节点的左儿子</span></span><br><span class="line">		    TreeNode p=x.parent;</span><br><span class="line">		    <span class="keyword">while</span>(p!=<span class="keyword">null</span>&amp;&amp;p.right==x)</span><br><span class="line">		    &#123;</span><br><span class="line">		    	x=p;<span class="comment">//父节点置为新的x</span></span><br><span class="line">		    	p=p.parent;  <span class="comment">//父节点的父节点置为新的父节点</span></span><br><span class="line">		    &#125;</span><br><span class="line">		   <span class="keyword">return</span> p;	 </span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+</li>
+</ul>
+<blockquote>
+<p>6.平衡查找树—2-3查找树</p>
+</blockquote>
+<p>1.定义</p>
+<ul>
+<li>任一节点只能是 2 度节点或 3 度节点，不存在元素数为 0 的节点。<ul>
+<li>2 度节点：包含 1 个元素的节点将只能有 2 个子节点；左节点比该节点小，右节点比该节点大</li>
+<li>3 度节点：包含 2 个元素的节点将只能有 3 个子节点；左节点小于该节点最小，中节点在该节点值中间，右节点大于该节点最大值</li>
+</ul>
+</li>
+<li>所有叶子节点都拥有相同的深度（depth）。</li>
+<li>元素始终保持排序顺序</li>
+</ul>
+<p>2.查找：类似二叉查找树</p>
+<ul>
+<li>递归实现</li>
+<li>非递归实现</li>
+</ul>
+<p>3.插入</p>
+<ul>
+<li><p>往2-node节点插入：在找到的节点中放入新元素，变为3-node节点</p>
+</li>
+<li><p>往3-node节点插入：</p>
+<ul>
+<li><p><strong>只包含一个3-node节点</strong> ： 假设这个节点能存放三个元素，暂时使其变成一个4-node节点，同时他包含四个子节点。然后，我们将这个4-node节点的中间元素提升，左边的节点作为其左节点，右边的元素作为其右节点 </p>
+<p><img src="https://xiaoyue26.github.io/images/2018-04/a3.jpg" alt="img"> </p>
+</li>
+<li><p><strong>节点是3-node，父节点是2-node</strong> ：</p>
+<ul>
+<li>把3-node变成4-node;</li>
+<li>把中间key往上扔,传递给父节点;</li>
+<li>父节点从<code>2-node</code>=&gt;<code>3-node</code></li>
+</ul>
+<p><img src="https://xiaoyue26.github.io/images/2018-04/a4.jpg" alt="img"> </p>
+</li>
+<li><p><strong>父节点是3-node,节点是3-node</strong> ： ,把中间元素往上传导,直到遇到父节点是2-node的。<br>如果连根节点也是3-node，就进行根节点分裂，高度+1。</p>
+<p> <img src="https://xiaoyue26.github.io/images/2018-04/a5.jpg" alt="img"> </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>4.性能</p>
+<ul>
+<li>最坏情况,所有节点都是2-node,因此最坏时间复杂度为O(logN).</li>
+<li>最好情况,所有节点都是3-node,因此最好时间复杂度为O(log3N)=0.631logN. </li>
+</ul>
+<blockquote>
+<p>7.平衡查找树—红黑树</p>
+</blockquote>
+<p>1.性质</p>
+<ul>
+<li>每个节点要么是红色，要么是黑色；</li>
+<li>根节点永远是黑色的；</li>
+<li>所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；</li>
+<li>每个红色节点的两个子节点一定都是黑色；</li>
+<li>从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；</li>
+</ul>
+<blockquote>
+<p>8.平衡查找树—AVL树</p>
 </blockquote>
 <blockquote>
-<p>4.平衡查找树</p>
+<p>9.平衡查找树—B树</p>
 </blockquote>
 <blockquote>
-<p>5.红黑二叉查找树</p>
+<p>10.平衡查找树—B+树</p>
 </blockquote>
 <blockquote>
-<p>6.散列表</p>
+<p>11.分块查找</p>
 </blockquote>
 <blockquote>
-<p>四、图</p>
+<p>12.哈希查找</p>
+</blockquote>
+<blockquote>
+<p>三、递归与分治策略</p>
+</blockquote>
+<blockquote>
+<p>四、动态规划</p>
+</blockquote>
+<blockquote>
+<p>五、贪心算法</p>
+</blockquote>
+<blockquote>
+<p>六、回溯法</p>
+</blockquote>
+<blockquote>
+<p>七、树</p>
+</blockquote>
+<blockquote>
+<p>八、图</p>
 </blockquote>
 <blockquote>
 <p>1.无向图</p>
@@ -494,6 +763,47 @@
 <blockquote>
 <p>4.最短路径</p>
 </blockquote>
+<blockquote>
+<p>九、树</p>
+</blockquote>
+<blockquote>
+<p>1.二叉树</p>
+</blockquote>
+<p>1.遍历</p>
+<ul>
+<li><p>递归</p>
+<ul>
+<li><p>前序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(TreeNode node)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (node != <span class="keyword">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          System.out.print(node.getData()+<span class="string">"  "</span>);</span><br><span class="line">          preOrder(node.getLeft());</span><br><span class="line">          preOrder(node.getRight());</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>中序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(TreeNode node)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (node != <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        	inOrder(node.getLeft());</span><br><span class="line">        	System.out.print(node.getData()+<span class="string">"  "</span>);</span><br><span class="line">        	inOrder(node.getRight());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(TreeNode node)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (node != <span class="keyword">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">      	postOrder(node.getLeft());</span><br><span class="line">      	postOrder(node.getRight());</span><br><span class="line">      	 System.out.print(node.getData()+<span class="string">"  "</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>非递归</p>
+<ul>
+<li><p>前序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrderNoRecursion</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        LinkedList&lt;TreeNode&gt; stack = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;(); </span><br><span class="line">        stack.push(root); </span><br><span class="line">        TreeNode current = <span class="keyword">null</span>; </span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty()) </span><br><span class="line">        &#123; </span><br><span class="line">            current = stack.pop(); </span><br><span class="line">            System.out.print(current.data+<span class="string">"  "</span>); </span><br><span class="line">            <span class="keyword">if</span> (current.getRight() != <span class="keyword">null</span>) </span><br><span class="line">                stack.push(current.getRight()); </span><br><span class="line">            <span class="keyword">if</span> (current.getLeft() != <span class="keyword">null</span>) </span><br><span class="line">                stack.push(current.getLeft()); </span><br><span class="line">        &#125; </span><br><span class="line">        System.out.println(); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>中序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorderNoRecursion</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        LinkedList&lt;TreeNode&gt; stack = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;(); </span><br><span class="line">        TreeNode current = root; </span><br><span class="line">        <span class="keyword">while</span> (current != <span class="keyword">null</span> || !stack.isEmpty()) </span><br><span class="line">        &#123; </span><br><span class="line">            <span class="keyword">while</span>(current != <span class="keyword">null</span>) </span><br><span class="line">            &#123; </span><br><span class="line">                stack.push(current); </span><br><span class="line">                current = current.getLeft(); </span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">if</span> (!stack.isEmpty()) </span><br><span class="line">            &#123; </span><br><span class="line">                current = stack.pop(); </span><br><span class="line">                System.out.print(current.data+<span class="string">"  "</span>); </span><br><span class="line">                current = current.getRight(); </span><br><span class="line">            &#125; </span><br><span class="line">        &#125; </span><br><span class="line">        System.out.println(); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postorderNoRecursion</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        TreeNode rNode = <span class="keyword">null</span>; </span><br><span class="line">        TreeNode current = root; </span><br><span class="line">        LinkedList&lt;TreeNode&gt; stack = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;(); </span><br><span class="line">        <span class="keyword">while</span>(current != <span class="keyword">null</span> || !stack.isEmpty()) </span><br><span class="line">        &#123; </span><br><span class="line">            <span class="keyword">while</span>(current != <span class="keyword">null</span>) </span><br><span class="line">            &#123; </span><br><span class="line">                stack.push(current); </span><br><span class="line">                current = current.getLeft(); </span><br><span class="line">            &#125; </span><br><span class="line">            current = stack.pop(); </span><br><span class="line">            <span class="keyword">while</span> (current != <span class="keyword">null</span> &amp;&amp; (current.getRight() == <span class="keyword">null</span> ||current.getRight() == rNode)) </span><br><span class="line">            &#123; </span><br><span class="line">                System.out.print(current.data+<span class="string">"  "</span>); </span><br><span class="line">                rNode = current; </span><br><span class="line">                <span class="keyword">if</span> (stack.isEmpty())</span><br><span class="line">                &#123; </span><br><span class="line">                    System.out.println(); </span><br><span class="line">                    <span class="keyword">return</span>; </span><br><span class="line">                &#125; </span><br><span class="line">                current = stack.pop(); </span><br><span class="line">            &#125; </span><br><span class="line">            stack.push(current); </span><br><span class="line">            current = current.getRight(); </span><br><span class="line">        &#125;          </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
