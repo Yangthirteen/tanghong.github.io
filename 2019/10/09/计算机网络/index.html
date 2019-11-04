@@ -90,7 +90,9 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/10/09/计算机网络/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/09/计算机网络/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
-<meta property="og:updated_time" content="2019-10-29T01:44:16.199Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/09/计算机网络/%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/09/计算机网络/%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E7%AE%97%E6%B3%95%EF%BC%88DV%EF%BC%89.png">
+<meta property="og:updated_time" content="2019-11-04T15:13:50.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络">
 <meta name="twitter:description" content="一、应用层   Web应用层协议：HTTP TCP作为运输层协议   持久连接和非持久连接 报文格式 请求报文 请求行：方法字段、URL字段、HTTP协议版本字段 首部行：Host（主机）、Connection（是否持久连接）、User-agent（发送请求的浏览器的类型）、Accept-language（用户想得到的语法版本）   响应报文 初始状态行：协议版本、状态码、相应状态信息 首部行：">
@@ -622,7 +624,43 @@
 <blockquote>
 <p>选路算法</p>
 </blockquote>
-<p>8.链路状态选路算法</p>
+<p>8.链路状态选路算法—全局算法，需要提前知道整个网络信息（一般通过链路状态广播算法完成）</p>
+<p><img src="/2019/10/09/计算机网络/%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E7%AE%97%E6%B3%95.png" alt="链路状态算法"></p>
+<ul>
+<li>复杂性：节点多的时候耗时太长</li>
+<li>震荡：链路费用非对称时出现路径翻转<ul>
+<li>解决方案：确保并非所有的路由器同时运行LS算法，通过对每台路由器发送链路通告的时间（避免所有路由器自同步）</li>
+</ul>
+</li>
+</ul>
+<p>9.距离矢量算法—分布式算法：迭代、异步、自我终结</p>
+<p><img src="/2019/10/09/计算机网络/%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E7%AE%97%E6%B3%95%EF%BC%88DV%EF%BC%89.png" alt="距离向量算法（DV）"></p>
+<ul>
+<li>重要公式:Bellman-Ford公式:<br>$$<br>d_x(y)=min\left{c(x,v)+d_v(y)\right}<br>$$</li>
+</ul>
+<ul>
+<li>链路费用变化与链路故障：好消息传播快，坏消息传播慢<ul>
+<li>解决方法：毒性逆转（善意的谎言）–多个节点的环路无法解决</li>
+</ul>
+</li>
+</ul>
+<p>10.层次选路算法</p>
+<ul>
+<li>关键：AS–自治系统<ul>
+<li>相同AS内使用相同的选路算法，拥有彼此信息：自治系统内部选路协议</li>
+<li>向外部转发分组—网关路由器</li>
+</ul>
+</li>
+<li>如何转发<ul>
+<li>一台网关路由器：直接转给它然后转发</li>
+<li>多台网关路由器：<ul>
+<li>知道每台网关路由器连接的网络中能够到达哪些目的地：自治系统间选路协议BGP4</li>
+<li>向AS中每台路由器传播信息,然后通过<strong>热土豆选路算法</strong>选择网关路由器：选择具有最小的最低费用的网关</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>四、数据链路层</p>
 </blockquote>
@@ -730,7 +768,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

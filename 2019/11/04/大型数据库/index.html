@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="一、基本原理1.ashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。2.HashMap数组每一个元素的初始值都是Null。3.对于HashMap，我们最常使用的是两个方法：Get 和 Put。4.新来的Entry节点插入链表时，使用的是“头插法”。是因为HashMap的发明者认为">
+<meta name="description" content="2019.11.04 一、案例一：服务器越来越多导致数据冗余 1.解决办法：用户分组—将不同用户的数据分布到不同的服务器上存储，每个用户分配一个组标记 2.注意  数据库组内不要使用自增ID，以便于以后在数据库组之间迁移用户，以实现更合理的I/O，磁盘空间及负载分布。 将userid，postid存储在全局服务器上，可以使用自增，数据库组中的相应值必须以全局服务器上的值为准。 在数据库组之间迁移用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于HashMap的知识">
-<meta property="og:url" content="http://yoursite.com/2019/07/17/关于HashMap的知识/index.html">
+<meta property="og:title" content="大型数据库">
+<meta property="og:url" content="http://yoursite.com/2019/11/04/大型数据库/index.html">
 <meta property="og:site_name" content="Blog for 汤洪">
-<meta property="og:description" content="一、基本原理1.ashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。2.HashMap数组每一个元素的初始值都是Null。3.对于HashMap，我们最常使用的是两个方法：Get 和 Put。4.新来的Entry节点插入链表时，使用的是“头插法”。是因为HashMap的发明者认为">
+<meta property="og:description" content="2019.11.04 一、案例一：服务器越来越多导致数据冗余 1.解决办法：用户分组—将不同用户的数据分布到不同的服务器上存储，每个用户分配一个组标记 2.注意  数据库组内不要使用自增ID，以便于以后在数据库组之间迁移用户，以实现更合理的I/O，磁盘空间及负载分布。 将userid，postid存储在全局服务器上，可以使用自增，数据库组中的相应值必须以全局服务器上的值为准。 在数据库组之间迁移用">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T03:47:15.806Z">
+<meta property="og:updated_time" content="2019-11-04T15:21:48.414Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于HashMap的知识">
-<meta name="twitter:description" content="一、基本原理1.ashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。2.HashMap数组每一个元素的初始值都是Null。3.对于HashMap，我们最常使用的是两个方法：Get 和 Put。4.新来的Entry节点插入链表时，使用的是“头插法”。是因为HashMap的发明者认为">
+<meta name="twitter:title" content="大型数据库">
+<meta name="twitter:description" content="2019.11.04 一、案例一：服务器越来越多导致数据冗余 1.解决办法：用户分组—将不同用户的数据分布到不同的服务器上存储，每个用户分配一个组标记 2.注意  数据库组内不要使用自增ID，以便于以后在数据库组之间迁移用户，以实现更合理的I/O，磁盘空间及负载分布。 将userid，postid存储在全局服务器上，可以使用自增，数据库组中的相应值必须以全局服务器上的值为准。 在数据库组之间迁移用">
 
 
 
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/17/关于HashMap的知识/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/04/大型数据库/">
 
 
 
@@ -130,7 +130,7 @@
 <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
 
 
-  <title>关于HashMap的知识 | Blog for 汤洪</title>
+  <title>大型数据库 | Blog for 汤洪</title>
   
 
 
@@ -237,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/17/关于HashMap的知识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/大型数据库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tanghong">
@@ -254,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于HashMap的知识</h1>
+          <h1 class="post-title" itemprop="name headline">大型数据库</h1>
         
 
         <div class="post-meta">
@@ -266,8 +266,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-17T19:48:09+08:00">
-                2019-07-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-04T23:15:56+08:00">
+                2019-11-04
               </time>
             
 
@@ -304,36 +304,21 @@
       
 
       
-        <p>一、基本原理<br>1.ashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。<br>2.HashMap数组每一个元素的初始值都是Null。<br>3.对于HashMap，我们最常使用的是两个方法：Get 和 Put。<br>4.新来的Entry节点插入链表时，使用的是“头插法”。是因为HashMap的发明者认为，后插入的Entry被查找的可能性更大。<br>5.HashMap的默认初始长度是16，并且每次自动拓展或者是手动初始化时，长度必须是2的幂。<br>(1)之所以选择16，是为了从key到index的Hash算法<br>(2)公式index = HashCode（Key） &amp; （Length - 1）<br>(3)length-1的二进制全部是1111，做与运算，Hash算法最终得到的index结果，完全取决于Key的Hashcode值的最后几位。只要输入的HashCode本身分布均匀，Hash算法的结果就是均匀的</p>
-<p>二、高并发下的HashMap<br>1.ReHash：在HashMap进行扩容时的一个步骤。<br>2.原因：HashMap的容量是有限的。当经过多次元素插入，使得HashMap达到一定饱和度时，Key映射位置发生冲突的几率会逐渐提高。这时候，HashMap需要扩展它的长度，也就是进行Resize。<br>3.衡量HashMap是否进行Resize的条件如下：HashMap.Size &gt;= Capacity * LoadFactor<br>4.ReHash的Java代码如下：<br>/**</p>
+        <p>2019.11.04</p>
+<p>一、案例一：服务器越来越多导致数据冗余</p>
+<p>1.解决办法：用户分组—将不同用户的数据分布到不同的服务器上存储，每个用户分配一个组标记</p>
+<p>2.注意</p>
 <ul>
-<li>Transfers all entries from current table to newTable.</li>
-<li>/
-void transfer(Entry[] newTable, boolean rehash) {<br>  // 新 table 的容量<br>  int newCapacity = newTable.length;<br>  // 将原 table 中数据迭代输出<br>  for (Entry&lt;K,V&gt; e : table) {<pre><code>  while(null != e) {
-          //用于记住当前e的next节点
-          Entry&lt;K,V&gt; next = e.next;
-          if (rehash) {
-              //若e.key==null则e.hash=0否则=hash.(e.key)
-              e.hash = null == e.key ? 0 : hash(e.key);
-          }
-          // 重新计算索引了
-          int i = indexFor(e.hash, newCapacity);
-          e.next = newTable[i];
-          newTable[i] = e;
-          //轮换下一节点
-          e = next;
-      }
-}</code></pre>}</li>
+<li>数据库组内不要使用自增ID，以便于以后在数据库组之间迁移用户，以实现更合理的I/O，磁盘空间及负载分布。</li>
+<li>将userid，postid存储在全局服务器上，可以使用自增，数据库组中的相应值必须以全局服务器上的值为准。</li>
+<li>在数据库组之间迁移用户时要万分小心，当迁移时用户不能有写操作。</li>
 </ul>
-<p>5.4中的indexFor函数<br>static int indexFor(int h, int length) {<br>        // assert Integer.bitCount(length) == 1 : “length must be a non-zero power of 2”;<br>        //hash 值与 数组的长度-1进行位运算，长度必须是2的幂。<br>        return h &amp; (length-1);<br>    }</p>
-<p>6.高并发下的问题，由于其他线程的影响，ReHash会出现表环！<br>7.解决办法在高并发场景下，通常常采用另一个集合类ConcurrentHashMap。这个集合类兼顾了线程安全和性能。</p>
-<p>三、Get函数<br>1.源码：<br>public V get(Object key) {<br>      // key 为 null 的情况<br>    if (key == null)<br>        return getForNullKey();<br>      // key ！= null 的情况<br>    int hash = hash(key.hashCode());<br>    // 遍历 table<br>        for (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)];<br>             e != null;<br>             e = e.next) {<br>            Object k;<br>              // 相等则返回 e.value<br>            if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k)))<br>                return e.value;<br>    }<br>    return null;<br>}</p>
-<p>当 key 为 null 时候：</p>
-<p>private V getForNullKey() {<br> // 遍历 table[0] 的链表<br>    for (Entry&lt;K,V&gt; e = table[0]; e != null; e = e.next) {<br>         if (e.key == null)<br>           return e.value;<br>   }<br>  return null;<br>}</p>
-<p> 该方法是一个私有方法，只在 get() 中被调用。该方法判断 table[0] 中的链表是否包含 key 为 null 的元素，包含则返回 value，不包含则返回 null。为什么是遍历 table[0] 的链表？因为 key 为 null 的时候获得的 hash 值都是 0。</p>
-<p>四、Put函数<br>1.注意下 putForNullKey( ) 这个函数,说明 HashMap 是允许 key 为 Null 的。<br>public V put(K key, V value) {<br>    // 即上图的 Entry 数组为空，则初始化<br>    if (table == EMPTY_TABLE) {<br>            inflateTable(threshold);<br>    }<br>    // put 进去的 key 为空的话,去 putForNullKey(value)这个方法存放<br>    if (key == null)<br>        return putForNullKey(value);<br>    // key 不为空，计算 hashkey<br>    int hash = hash(key);<br>    // 根据 hashkey 找到在 Entry 数组中的位置<br>    int i = indexFor(hash, table.length);<br>    // 每个位置都是一个链表，循环直到找到有位置，当前 Entry 数组位置 e 存在<br>    // 每个节点都有一个 next 索引 指向 链的下一个节点<br>      // 这种情况是 Entry 数组上已经插入了元素。<br>    for (Entry&lt;K,V&gt; e = table[i]; e != null; e = e.next) {<br>          Object k;<br>          // 找到指定 key 与需要放入的 key 相等（hash 值相同<br>           // 通过 equals 比较放回 true）<br>             if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) {<br>                V oldValue = e.value;<br>                e.value = value;<br>                e.recordAccess(this);<br>                // 返回原来这个位置上的值<br>                return oldValue;<br>            }<br>        }<br>    // 表示更改了一次底层数据结构<br>    modCount++;<br>    // 此时进行元素的插入，添加至索引 i 处<br>    addEntry(hash, key, value, i);<br>    return null;<br>}
-// addEntry 方法中会检查当前 table 是否需要 resize<br>void addEntry(int hash, K key, V value, int bucketIndex) {<br>        // Entry 桶位不为空，就是已经插入了值，并且 size 大于 一定的量了<br>        if ((size &gt;= threshold) &amp;&amp; (null != table[bucketIndex])) {<br>        // 当前 map 中的 size 如果大于 threshole 的阈值，则 resize 将 table 的 length 扩大2倍。<br>            resize(2 * table.length);<br>            hash = (null != key) ? hash(key) : 0;<br>            bucketIndex = indexFor(hash, table.length);<br>        }<br>        //增加数组的长度<br>        createEntry(hash, key, value, bucketIndex);<br>}</p>
-<p>参考资料：<br><a href="https://zhuanlan.zhihu.com/p/31610616" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31610616</a><br><a href="https://zhuanlan.zhihu.com/p/31614195" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31614195</a></p>
+<p>3.其他问题</p>
+<ul>
+<li>Master-Slave模式的单点问题</li>
+</ul>
+<p>二、如何构建高性能数据库系统</p>
+<p>1.应用层面的优化<br>2.数据库设计与配置优化<br>3.操作系统和硬件优化<br>4.架构的优化</p>
 
       
     </div>
@@ -358,8 +343,8 @@ void transfer(Entry[] newTable, boolean rehash) {<br>  // 新 table 的容量<br
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/11/Git操作学习/" rel="next" title="Git操作学习">
-                <i class="fa fa-chevron-left"></i> Git操作学习
+              <a href="/2019/10/15/Linux/" rel="next" title="Linux">
+                <i class="fa fa-chevron-left"></i> Linux
               </a>
             
           </div>
@@ -367,10 +352,6 @@ void transfer(Entry[] newTable, boolean rehash) {<br>  // 新 table 的容量<br
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/19/Java并发编程/" rel="prev" title="Java并发编程">
-                Java并发编程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
