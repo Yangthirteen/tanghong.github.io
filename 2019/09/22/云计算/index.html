@@ -102,7 +102,8 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/%E5%B5%8C%E5%A5%97%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%8C%96%E5%AE%9A%E4%B9%89.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/Dremel创建树状结构.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/Dremrl数据重组.png">
-<meta property="og:updated_time" content="2019-10-31T14:47:16.140Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/BigTable%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png">
+<meta property="og:updated_time" content="2019-11-05T14:51:36.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云计算">
 <meta name="twitter:description" content="2019.09.19  一.文件系统  1.定义：操作系统在储存设备上组织文件的方法。 2.组成：文件系统的接口、对对象操纵和管理的软件集合、对象及属性。  二.分布式文件系统  1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。 2.基于C/S模式 3.设计需要考虑什么问题  系统架构如何设计—主从模式 文件如何拆分 元数据怎么管理 如何容错 故障自动检测 节点动态">
@@ -420,7 +421,7 @@
 <li>reason：</li>
 </ul>
 <blockquote>
-<p>四、分布式锁服务Chubby</p>
+<p>四、分布式锁服务Chubby：解决分布式一致性问题</p>
 </blockquote>
 <p>1.定义：提供粗粒度锁服务的一个文件系统，它基于松耦合分布式系统，解决了分布的一致性问题。决分布式系统中的一致性问题，其中最常见的就是分布式系统的选主需求及一致性的数据存储</p>
 <ul>
@@ -1137,6 +1138,52 @@
 </blockquote>
 <p>1.CDN：通过将网站内容发布到靠近用户的边缘节点，使不同地域的用户在访问相同网页时可以就近获取。</p>
 <p>2.CloudFront</p>
+<blockquote>
+<p>十四、BigTables</p>
+</blockquote>
+<p>1.设计动机</p>
+<ul>
+<li>需要存储的数据种类繁多</li>
+<li>海量的服务请求</li>
+<li>商用数据库无法满足需求</li>
+</ul>
+<p>2.基本目标</p>
+<ul>
+<li>广泛的使用性、很强的可拓展性、高可用性、简单性</li>
+</ul>
+<p>3.数据模型</p>
+<ul>
+<li>存储格式：分布式多维映射表：行关键字+列关键字+时间戳作为索引</li>
+</ul>
+<p>4.系统架构</p>
+<p><img src="/2019/09/22/云计算/BigTable%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png" alt="BigTable系统架构"></p>
+<ul>
+<li>Chubby作用：<ul>
+<li>保证一时间内只有一个主服务器</li>
+<li>获取子表的位置信息</li>
+<li>保存BigTable的模式信息及访问控制列表</li>
+</ul>
+</li>
+</ul>
+<p>5.主服务器：新子表分配+子表服务器状态监控+子服务器之间的负载均衡</p>
+<p>6.子表服务器：</p>
+<ul>
+<li>SSTable格式</li>
+<li>组成：一个日志文件+SSTable</li>
+<li>地址组成：类似B+树的三层查询体系</li>
+<li>数据存储及读/写操作<ul>
+<li>新数据在内存的内存表中</li>
+<li>老数据以SSTable格式在GFS中</li>
+</ul>
+</li>
+<li>三种形式压缩：次压缩、合并压缩、主压缩</li>
+</ul>
+<p>7.性能优化</p>
+<ul>
+<li>局部性群组：将原本不在一起的数据以列族为单位，根据需要组织在一个单独的SSTable中</li>
+<li>压缩</li>
+<li>布隆过滤器</li>
+</ul>
 
       
     </div>
