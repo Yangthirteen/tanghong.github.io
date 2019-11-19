@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/10/09/计算机网络/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/09/计算机网络/%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E7%AE%97%E6%B3%95.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/09/计算机网络/%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E7%AE%97%E6%B3%95%EF%BC%88DV%EF%BC%89.png">
-<meta property="og:updated_time" content="2019-11-05T15:00:59.920Z">
+<meta property="og:updated_time" content="2019-11-11T15:05:02.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络">
 <meta name="twitter:description" content="一、应用层   Web应用层协议：HTTP TCP作为运输层协议   持久连接和非持久连接 报文格式 请求报文 请求行：方法字段、URL字段、HTTP协议版本字段 首部行：Host（主机）、Connection（是否持久连接）、User-agent（发送请求的浏览器的类型）、Accept-language（用户想得到的语法版本）   响应报文 初始状态行：协议版本、状态码、相应状态信息 首部行：">
@@ -669,8 +669,88 @@
 <li>维护选路表，接收邻居通告，更新选路表</li>
 </ul>
 <p>12.AS内部选路：OSPF</p>
+<p>13.自治系统间的选路：BGF</p>
+<p>14.广播选路算法</p>
+<ul>
+<li>无控制洪泛：广播风暴问题</li>
+<li>受控洪泛：<ul>
+<li>序号控制洪泛：分组中放入源地址以及广播序号，每个节点维护一个序号列表，若重复则丢弃</li>
+<li>反向路径转发(RPF)：当收到广播分组时，当分组到达的链路正好是他自己到源节点最短单播路径上时，才转发该分组</li>
+</ul>
+</li>
+<li>生成树广播(避免冗余分组传播)：首先对于网络节点构造一棵生成树，源节点向属于生成树的特定路径发送分组，其他节点接收分组后向生成树中的邻居发送分组<ul>
+<li>生成—基于中心方法：定义一个中心节点，节点向中心节点单播加入树报文，不断转发直到到达一个眼睛属于生成树的节点</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>多播</p>
+</blockquote>
+<p>15.如何标识多播的接受方  and  如何为发到这些接收方的分组编址</p>
+<ul>
+<li>revolution：间接地址编址—表示一组接收方使用一个D类多播地址</li>
+</ul>
+<p>16.互联网管理协议IGMP</p>
+<ul>
+<li><p>可让一台主机通知与其相连接的路由器，某个应用程序想加入一个特定的多播组</p>
+</li>
+<li><p>报文类型</p>
+<ul>
+<li>membership_query：确定该接口上的主机已经加入所有的多播组集合</li>
+<li>membership_report：响应上一个报文</li>
+<li>leave-group：离开组</li>
+</ul>
+</li>
+</ul>
+<p>17.多播选路算法</p>
+<ul>
+<li>使用一棵组共享树进行多播选路</li>
+<li>使用一棵基于源的树进行多播选路</li>
+</ul>
+<p>18.因特网中的选路算法</p>
+<ul>
+<li>距离向量多播选路协议DVMRP</li>
+</ul>
 <blockquote>
 <p>四、数据链路层</p>
+</blockquote>
+<blockquote>
+<p>差错检测和纠错技术</p>
+</blockquote>
+<p>1.奇偶校验</p>
+<p>2.检验和方法</p>
+<p>3.循环冗余检测</p>
+<blockquote>
+<p>多路访问协议</p>
+</blockquote>
+<p>1.信道划分协议</p>
+<ul>
+<li>时分多路复用</li>
+<li>频分多路复用</li>
+<li>码分多址</li>
+</ul>
+<p>2.随机接入协议</p>
+<ul>
+<li>时隙ALOHA</li>
+<li>ALOHA</li>
+<li>载波监听多路访问CSMA</li>
+</ul>
+<p>3.轮流协议</p>
+<ul>
+<li>轮询协议</li>
+<li>令牌传递协议</li>
+</ul>
+<blockquote>
+<p>链路层编址</p>
+</blockquote>
+<p>1.MAC地址</p>
+<p>2.地址解析协议</p>
+<ul>
+<li>同一子网</li>
+<li>不同子网</li>
+</ul>
+<blockquote>
+<p>PPP：点对点协议</p>
 </blockquote>
 
       

@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/用例数估算.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/练习.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/23/软件测试技术/%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95.png">
-<meta property="og:updated_time" content="2019-11-04T15:16:02.395Z">
+<meta property="og:updated_time" content="2019-11-12T11:38:36.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件测试技术">
 <meta name="twitter:description" content="第二章—–软件测试概述  1.软件测试定义的两面性  正向思维－验证软件正常工作 逆向思维－假定软件有错误  2.软件测试定义  Bill Hetzel博士 软件测试就是一系列活动，这些活动是为了评估一个程序或软件系统的特性与能力，并确定是否达到了预期效果。   IEEE 使用人工或自动手段，来运行或测试某个系统的过程。其目的在于检验它是否满足规定的需求或弄清预期结果与实际结果之间的差别。">
@@ -735,6 +735,18 @@
 <p>3.循环测试</p>
 </blockquote>
 <p>1.简单循环</p>
+<ul>
+<li><p>完全跳过循环</p>
+</li>
+<li><p>只经过循环一次</p>
+</li>
+<li><p>经过循环两次</p>
+</li>
+<li><p>经过循环m（ m &lt; n ）次</p>
+</li>
+<li><p>分别经过循环n-1, n, n+1 次</p>
+</li>
+</ul>
 <img src="/2019/09/23/软件测试技术/循环测试-简单循环.png" alt="循环测试-简单循环" style="zoom:50%;">
 
 <p>2.嵌套循环</p>
@@ -764,6 +776,31 @@
 <p>4.小结</p>
 </blockquote>
 <p><img src="/2019/09/23/软件测试技术/%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95.png" alt="白盒测试"></p>
+<blockquote>
+<p>八、单元测试</p>
+</blockquote>
+<p>1.定义：对软件基本的组成单元进行独立的测试</p>
+<p>2.why进行测试：</p>
+<ul>
+<li>尽早发现错误</li>
+<li>检查代码是否符合设计和规范，有利于将来代码的维护</li>
+</ul>
+<p>3.目标：单元模块被正确编码</p>
+<p>4.任务</p>
+<ul>
+<li>模块独立执行路径测试：检查每一条独立执行路径的测试，并保证每条语句被至少执行一次。</li>
+<li>局部数据结构测试：检查局部数据结构完整性</li>
+<li>模块接口测试：检查模块接口是否正确</li>
+<li>单元边界条件测试：检查临界数据处理的正确性</li>
+<li>单元容错测试：预设的各种出错处理是否正确有效</li>
+</ul>
+<p>5.静态测试技术：不运行，只读（互查-》走查-》评审）</p>
+<p>6.动态测试技术：白盒测试+黑盒测试</p>
+<p>7.驱动模块：对底层或子层模块进行测试所编写的调用这些模块的程序</p>
+<p>8.桩模块（stub）：对顶层或上层模块进行测试时所编写的替代下层模块的程序</p>
+<blockquote>
+<p>九、集成测试</p>
+</blockquote>
 
       
     </div>

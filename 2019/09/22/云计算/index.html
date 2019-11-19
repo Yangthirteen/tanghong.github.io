@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/Dremel创建树状结构.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/Dremrl数据重组.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/云计算/BigTable%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png">
-<meta property="og:updated_time" content="2019-11-05T14:51:36.317Z">
+<meta property="og:updated_time" content="2019-11-18T16:35:49.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云计算">
 <meta name="twitter:description" content="2019.09.19  一.文件系统  1.定义：操作系统在储存设备上组织文件的方法。 2.组成：文件系统的接口、对对象操纵和管理的软件集合、对象及属性。  二.分布式文件系统  1.特征：物理储存资源不一定直接连接在本地节点上，而是通过计算机网络与节点相连。 2.基于C/S模式 3.设计需要考虑什么问题  系统架构如何设计—主从模式 文件如何拆分 元数据怎么管理 如何容错 故障自动检测 节点动态">
@@ -347,7 +347,7 @@
 <ul>
 <li>客户端首先访问Master节点，获取交互的Chunk Server信息，然后访问这些Chunk Server，完成数据存取工作。这种设计方法实现了控制流和数据流的分离。</li>
 <li>Client与Master之间只有控制流，而无数据流，极大地降低了Master的负载。</li>
-<li>Client与Chunk Server之间直接传输数据流，同时由于文件被分成多个Chunk进行分布式存储，Client可以同时访问多个Chunk Server，从而使得整个系统的I/O高度并行，系统整体性能得到提高。 </li>
+<li>Client与Chunk Server之间直接传输数据流，同时由于文件被分成多个Chunk进行分布式存储，Client可以同时访问多个Chunk Server，从而使得整个系统的I/O高度并行，系统整体性能得到提高。</li>
 </ul>
 <p>(3)特点</p>
 <ul>
@@ -446,18 +446,18 @@
 <li>每次只批准一个决议</li>
 <li>只有决议确定被批准后learners才能获取这个决议</li>
 </ul>
-<p>（3）系统的约束条件</p>
+<p><strong><em>（3）系统的约束条件</em></strong></p>
 <ul>
-<li><p>p1：每个acceptor只接受它得到的第一个决议。</p>
+<li><p><strong><em>p1：每个acceptor只接受它得到的第一个决议。</em></strong></p>
 </li>
-<li><p>p2：一旦某个决议得到通过，之后通过的决议必须和该决议保持一致。</p>
+<li><p><strong><em>p2：一旦某个决议得到通过，之后通过的决议必须和该决议保持一致。</em></strong></p>
 <ul>
-<li>p2a：一旦某个决议v得到通过，之后任何acceptor再批准的决议必须是v。</li>
-<li>p2b：一旦某个决议v得到通过，之后任何proposer再提出的决议必须是v。</li>
-<li>p2c：如果一个编号为n的提案具有值v，那么存在一个“多数派”，要么它们中没有谁批准过编号小于n的任何提案，要么它们进行的最近一次批准具有值v。</li>
+<li><strong><em>p2a：一旦某个决议v得到通过，之后任何acceptor再批准的决议必须是v。</em></strong></li>
+<li><strong><em>p2b：一旦某个决议v得到通过，之后任何proposer再提出的决议必须是v。</em></strong></li>
+<li><strong><em>p2c：如果一个编号为n的提案具有值v，那么存在一个“多数派”，要么它们中没有谁批准过编号小于n的任何提案，要么它们进行的最近一次批准具有值v。</em></strong></li>
 </ul>
 </li>
-<li><p>为了保证决议的唯一性，acceptors也要满足一个约束条件：当且仅当 acceptors 没有收到编号大于n的请求时，acceptors 才批准编号为n的提案。</p>
+<li><p><strong><em>为了保证决议的唯一性，acceptors也要满足一个约束条件：当且仅当 acceptors 没有收到编号大于n的请求时，acceptors 才批准编号为n的提案。</em></strong></p>
 </li>
 </ul>
 <p>（4）决议阶段</p>
@@ -1184,6 +1184,24 @@
 <li>压缩</li>
 <li>布隆过滤器</li>
 </ul>
+<blockquote>
+<p>十五Openstack</p>
+</blockquote>
+<ul>
+<li>OpenStack是一个管理计算、存储和网络资源的数据中心云计算开放平台，通过一个仪表板，为管理员提供了所有的管理控制，同时通过Web界面为其用户提供资源。</li>
+</ul>
+<p>一、主要组件和功能</p>
+<p><strong>1.计算服务Nova</strong>：Nova处理OpenStack云中实例（instances）生命周期的所有活动</p>
+<p><strong>2.对象存储服务Swift</strong>：可扩展的对象存储系统</p>
+<p><strong>3.镜像服务Glance</strong>：</p>
+<ul>
+<li>Glance提供了一个虚拟磁盘镜像的目录和存储仓库，并且可以提供对虚拟机镜像的存储和检索</li>
+<li>Glance作为OpenStack的虚拟机的Image（镜像）服务，提供了一系列的REST API，用来管理、查询虚拟机的镜像</li>
+</ul>
+<p>4.身份认证服务keystone</p>
+<p>5.网络管理服务Quantum</p>
+<p>6.存储管理服务Cinder</p>
+<p>7.仪表盘Horizon</p>
 
       
     </div>
