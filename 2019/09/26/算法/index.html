@@ -101,8 +101,7 @@
 <meta property="og:image" content="https://segmentfault.com/img/remote/1460000015590870?w=1304&h=230">
 <meta property="og:image" content="https://segmentfault.com/img/remote/1460000015590871?w=1302&h=224">
 <meta property="og:image" content="https://segmentfault.com/img/remote/1460000012728526?w=1308&h=234">
-<meta property="og:image" content="https://segmentfault.com/img/remote/1460000015590874?w=1600&h=314">
-<meta property="og:updated_time" content="2019-11-19T15:14:23.298Z">
+<meta property="og:updated_time" content="2019-11-25T15:33:55.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法">
 <meta name="twitter:description" content="一、排序   1.选择排序  1.原理：  首先，找到数组中最小的那个元素  其次，将它和数组的第一个元素交换位置   再次，在剩下的元素中找到最下的元素，将它与数组中的第二个元素交换位置，如此反复   2.效率：对于长度为N的数组，选择排序需要大约(N^2)/2次比较和N次交换 3.特点  运行时间和输入无关（某些时候是缺点） 数据移动最少  4.代码实现   2.插入排序  1.原理：将数组">
@@ -777,29 +776,26 @@
 </ul>
 </li>
 </ul>
-<p>5.删除：对于有两个孩子的被删除节点，需要找到该节点的前驱后者后继，将前驱/后继中的值复制到被删除节点中，再将前驱/后继删除。转化为只有一个孩子节点的问题</p>
+<p>5.删除：对于有两个孩子的被删除节点，需要找到该节点的后继，将后继中的值复制到被删除节点中，再将后继删除。转化为只有一个孩子节点的问题</p>
 <ul>
-<li>复杂度在于删除节点的颜色<ul>
-<li>删除节点是红色，直接拿孩子节点补空位</li>
-<li>删除节点是黑色，破坏性质5,<ul>
-<li>若孩子节点是红色的，直接拿孩子节点补位，染黑</li>
-<li>若孩子节点是黑色，有<strong>六种情况</strong></li>
+<li>新要删除的节点<strong>N</strong>因为是后继，因此左子树一定为空</li>
+<li>情况一：<strong>N</strong>为红色<ul>
+<li>右子树肯定也为空</li>
+<li>直接删除</li>
+</ul>
+</li>
+<li>情况二：<strong>N</strong>为黑色<ul>
+<li>2.1右孩子节点为红色：用右孩子的数值替换N,然后删除右孩子</li>
+<li>2.2右孩子为空：<ul>
+<li>2.2.1兄弟节点为红色：父节点一定是黑色：左旋父节点，父节点变为红色，兄弟节点变为黑色</li>
+<li>2.2.2兄弟节点为黑色<ul>
+<li>2.2.2.1侄子全部黑色：兄弟节点变为红色（右-1），若父节点红色，变为黑色；如果父节点黑色，继续往上面遍历</li>
+<li>2.2.2.2左侄子黑色，右侄子红色：此时左子树-1，为了弥补，兄弟颜色变为父亲颜色（右-1），父节点变为黑色，右侄子变为黑色</li>
+<li>2.2.2.3左侄子红色，右侄子黑色：左侄子变为父节点颜色，父节点变为黑色，兄弟节点右旋，父节点左旋</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>假设： 最终被删除的节点为<code>X</code>（至多只有一个孩子节点），其孩子节点为<code>N</code>，<code>X</code>的兄弟节点为<code>S</code>，<code>S</code>的左节点为 SL，右节点为 SR。接下来讨论是建立在节点 <code>X</code> 被删除，节点 <code>N</code> 替换<code>X</code>的基础上进行的 </li>
-</ul>
-<p><img src="https://segmentfault.com/img/remote/1460000015590874?w=1600&h=314" alt="img"> </p>
-<ul>
-<li>No.1： 要删除的节点 X 是根节点，且左右孩子节点均为空节点，此时将节点 X 用空节点替换完成删除操作。 </li>
-<li>No.2：S为红色，其他节点为黑色<ul>
-<li>对N父节点左旋，P与S互换颜色</li>
-<li>按照No.4/5/6调整</li>
-</ul>
-</li>
-<li>No.3：N的父节点，兄弟节点S和S的孩子均为黑色<ul>
-<li></li>
 </ul>
 </li>
 </ul>
