@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/顺序图.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E4%BE%9B%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%9C%80%E6%8E%A5%E5%8F%A3.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/UML%E6%80%BB%E7%BB%93.png">
-<meta property="og:updated_time" content="2019-11-25T14:13:11.315Z">
+<meta property="og:updated_time" content="2019-12-03T08:36:35.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件体系结构">
 <meta name="twitter:description" content="2019.09.11 1.开闭原则：对扩展开放，对修改关闭。 2.里氏替换原则：派生类型（子类）必须能够替换掉它们的基类型（父类）。 2019.09.16  第一章——软件体系结构的定义  1.软件体系结构包括构件、连接件和约束（配置）三大要素。 （1）构件是可预制和可重用的软件部件，是组成体系结构的基本计算单元或数据存储单元，可以是一个处理过程或者是数据元素。用于实现计算和状态的单元。可简单可复">
@@ -1232,6 +1232,80 @@ fireXXX(){<br>    al.ap();<br>}
 <li>增加产品等级结构时：不符合开闭原则</li>
 </ul>
 <p>6.优点+缺点+适用模式：P68</p>
+<p>三、原型模式</p>
+<p>1.定义：使用原型实例指定待创建对象的类型，且通过复制这个原型来创建新的对象</p>
+<p>2.三个角色</p>
+<ul>
+<li>Prototype（抽象原型类）：声明克隆方法的接口，具体原型类的公共父类</li>
+<li>ConcretePrototype（具体原型类）：实现clone方法</li>
+<li>Client（客户类）</li>
+</ul>
+<p>3.浅clone与深clone：是否复制包含在原型对象中引用类型的成员变量</p>
+<ul>
+<li>浅clone不复制，深clone复制</li>
+</ul>
+<p>4.原型模式实现</p>
+<ul>
+<li>通用实现方法：在clone方法中实例化一个自身类型相同的对象并且将其返回，同时将相关参数传入新创建的对象中，保证成员变量相同<ul>
+<li>对于引用类型的对象，使用赋值来实现复制，是浅clone</li>
+<li>使用创建一个全新的成员对象来实现复制，是深clone</li>
+</ul>
+</li>
+<li>Java语言中的clone()方法和Cloneable接口<ul>
+<li>Java中clone方法满足以下几点<ul>
+<li>x.clone()!=x</li>
+<li>x.clone().getClass()==x.getClass()</li>
+<li>若equals()方法定义恰当，x.clone.equals(x)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>5.深clone解决方案</p>
+<ul>
+<li>通过序列化，将对象写到流中</li>
+<li>需要实现Serializable接口</li>
+</ul>
+<p>6.原型管理器</p>
+<ul>
+<li>将多个原型对象储存在一个集合中供客户端使用，专门负责克隆对象的工厂</li>
+</ul>
+<p>7.优点+缺点+使用环境：P102</p>
+<p>四、单例模式</p>
+<p>1.定义：确保一个类只有一个实例，并提供一个全局访问点来访问这个唯一实例</p>
+<p>2.结构：只包含一个单例角色Singleton，一个静态方法getInstance()获取唯一实例</p>
+<p>3.实现：</p>
+<ul>
+<li>存在一个静态成员变量和静态公有的工厂方法，工厂方法负责检验实例的存在并实例化自己，存储在静态成员变量中，确保只有一个实例被创建</li>
+<li>注意<ul>
+<li>构造函数为private</li>
+<li>提供一个类型为自身的静态私有成员变量</li>
+<li>提供一个公有的静态工厂方法</li>
+</ul>
+</li>
+</ul>
+<p>4.存在的问题：在多线程下可能导致实例不唯一（某个线程创建到一半，另一个线程也开始创建）</p>
+<p>5.解决方案</p>
+<ul>
+<li>饿汉式单例：在定义静态变量的时候实例化单例类<ul>
+<li>类被加载的时候，成员变量被初始化，唯一实例被创建</li>
+<li>优点：不需要考虑线程安全</li>
+<li>缺点：类加载的时候耗费时间长；这个实例及时不被使用，也会被创建并一直存在，占用内存</li>
+</ul>
+</li>
+<li>懒汉式单例：在第一次被引用的时候将自己实例化（延迟加载）<ul>
+<li>实现一：使用synchronized关键字对getInstance()方法上锁（高并发下会导致系统性能降低）</li>
+<li>实现二：使用synchronized对创建实例的代码上锁（相当于没锁）</li>
+<li>实现三：双重检查锁定，对创建实例代码锁定的同时，再加一行检查代码（需要在静态成员变量的前面加上volatile关键词，取消虚拟机对于代码的优化–重复检查代码）</li>
+</ul>
+</li>
+<li>Java中–静态内部类IoDH：在单例类中添加一个静态内部类<ul>
+<li>Java中静态内部类的静态对象加载时，Java虚拟机会保证线程安全</li>
+<li>类加载时不会分配内存</li>
+</ul>
+</li>
+</ul>
+<p>6.优点+缺点+适用环境：P115</p>
 
       
     </div>
