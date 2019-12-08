@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/顺序图.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/%E4%BE%9B%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%9C%80%E6%8E%A5%E5%8F%A3.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/22/软件体系结构/UML%E6%80%BB%E7%BB%93.png">
-<meta property="og:updated_time" content="2019-12-03T08:36:35.292Z">
+<meta property="og:updated_time" content="2019-12-08T14:07:57.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软件体系结构">
 <meta name="twitter:description" content="2019.09.11 1.开闭原则：对扩展开放，对修改关闭。 2.里氏替换原则：派生类型（子类）必须能够替换掉它们的基类型（父类）。 2019.09.16  第一章——软件体系结构的定义  1.软件体系结构包括构件、连接件和约束（配置）三大要素。 （1）构件是可预制和可重用的软件部件，是组成体系结构的基本计算单元或数据存储单元，可以是一个处理过程或者是数据元素。用于实现计算和状态的单元。可简单可复">
@@ -1306,6 +1306,47 @@ fireXXX(){<br>    al.ap();<br>}
 </li>
 </ul>
 <p>6.优点+缺点+适用环境：P115</p>
+<p>五、适配器模式</p>
+<p>1.定义：将一个类的接口转换成客户希望的另一个接口，适配器模式让那些接口不兼容的类可以一起工作</p>
+<p>2.结构</p>
+<ul>
+<li>Target-目标抽象类：客户所需要的接口</li>
+<li>Adapter-适配器类：转换器，产生联系</li>
+<li>Adaptee-适配者类：希望使用的接口</li>
+</ul>
+<p>3.实现</p>
+<ul>
+<li>类适配器：适配器实现Target接口，与适配者是继承关系</li>
+<li>对象适配器：适配器继续Target接口，与适配者是关联关系</li>
+</ul>
+<p>4.缺省适配器模式</p>
+<ul>
+<li><p>定义：当不需要实现一个人接口中提供的所有方法时，可先设计一个抽象类实现该接口，并为接口中的每个方法提供一个默认实现（空方法），那么该抽象类的子类可以选择性的覆盖父类的某些方法来实现需求。</p>
+</li>
+<li><p>适用于不想使用一个接口中所有方法的情况，又称为单接口适配器模式</p>
+</li>
+<li><p>结构：</p>
+<ul>
+<li>ServiceInterface-适配者接口：接口，有大量方法</li>
+<li>AbstractServiceClass-缺省适配器类：使用空方法实现</li>
+<li>ConcreteServiceClass-具体业务类：子类，选择覆盖方法</li>
+</ul>
+</li>
+</ul>
+<p>5.双向适配器：Target和Adaptee可以互换角色</p>
+<p>6.优点+缺点+适用环境：P129</p>
+<p>六、桥接模式</p>
+<p>1.定义：将抽象部分与他的实现部分解耦，使得两者都能够独立变化</p>
+<p>2.结构：</p>
+<ul>
+<li>Abstraction-抽象类：</li>
+<li>RefinedAbstraction-扩充抽象类：</li>
+<li>Implementor-实现类接口：</li>
+<li>ConcreteImplementor-具体实现类：</li>
+</ul>
+<p>3.实现：毛笔和蜡笔</p>
+<p>4.桥接模式和适配器模式的联用</p>
+<p>5.优点+缺点+适用环境：P144</p>
 
       
     </div>
@@ -1410,7 +1451,7 @@ fireXXX(){<br>    al.ap();<br>}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
