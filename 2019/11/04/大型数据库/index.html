@@ -90,7 +90,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/11/04/大型数据库/RAC%E6%96%B9%E5%BC%8F.png">
 <meta property="og:image" content="http://yoursite.com/2019/11/04/大型数据库/HOTSTANDBY(%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87)%E6%96%B9%E5%BC%8F.png">
-<meta property="og:updated_time" content="2019-11-13T15:20:43.374Z">
+<meta property="og:updated_time" content="2019-12-28T06:12:34.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大型数据库">
 <meta name="twitter:description" content="2019.11.04 一、案例一：服务器越来越多导致数据冗余 1.解决办法：用户分组—将不同用户的数据分布到不同的服务器上存储，每个用户分配一个组标记 2.注意  数据库组内不要使用自增ID，以便于以后在数据库组之间迁移用户，以实现更合理的I/O，磁盘空间及负载分布。 将userid，postid存储在全局服务器上，可以使用自增，数据库组中的相应值必须以全局服务器上的值为准。 在数据库组之间迁移用">
@@ -324,26 +324,75 @@
 <p>1.应用层面的优化<br>2.数据库设计与配置优化<br>3.操作系统和硬件优化<br>4.架构的优化</p>
 <p>2019.11.07—Oracle体系结构</p>
 <p>1.Oracle服务器：数据库＋实例</p>
+<p>Oracle数据库 :</p>
+<ul>
+<li>是作为一个单元对待的数据的集合体</li>
+<li>由三种文件类型组成:控制文件+数据文件+重做日志文件</li>
+</ul>
 <p>2.Oracle实例：</p>
 <ul>
-<li>访问数据库的基本方式</li>
-<li>总是打开一个且只打开一个数据库</li>
-<li>组成：内存结构+进程结构</li>
-<li>内存结构：<ul>
-<li>系统全局区SGA：实例启动的时候分配，包括共享池、数据块高速缓冲区、重做日志缓冲区<ul>
+<li><p>访问数据库的基本方式</p>
+</li>
+<li><p>总是打开一个且只打开一个数据库</p>
+</li>
+<li><p>组成：内存结构+进程结构</p>
+</li>
+<li><p>oracle数据库内存结构：</p>
+<ul>
+<li><p><strong>系统全局区SGA</strong>：实例启动的时候分配，包括共享池、数据块高速缓冲区、重做日志缓冲区</p>
+<ul>
 <li>可选结构：大型池、JAVA池</li>
-<li>共享储存区：用来存储最近最多执行的SQL语句和最近最多使用的数据定义.包括：库缓冲区、数据字典缓冲区</li>
-<li>库缓冲区：存储最近使用的SQL和PL/SQL语句信息</li>
-<li>数据字典缓冲区：数据库里最经常使用的对象定义的集合</li>
-<li>数据块高速缓冲区：储存以前从数据文件中取出过的数据块的拷贝信息.</li>
-<li>重做日志缓冲区：记录数据块的所有变化.  </li>
-<li>大型池：可选择的存贮区域,只配置在共享服务器环境中.</li>
-<li>JAVA区：</li>
 </ul>
 </li>
-<li>程序全局区PGA：服务器进程启动时分配，每个用户进程连接Oracle数据库分配的区域</li>
 </ul>
 </li>
+</ul>
+<pre><code>- 共享储存区(共享池)：用来存储最近最多执行的SQL语句和最近最多使用的数据定义.包括：库缓冲区、数据字典缓冲区
+
+  - 大小由参数SHARED_POOL_SIZE决定
+
+  - 库缓冲区：存储最近使用的SQL和PL/SQL语句信息，能够使普遍使用的语句能够共享
+
+    - 通过LRU算法进行管理
+
+    - 共享SQL 区域
+    - 共享 PL/SQL 区域
+    - 其中各自的大小由共享池内部指定
+
+  - 数据字典缓冲区：数据库里最经常使用的对象定义的集合
+
+    - 它的大小由共享池的大小决定
+
+
+
+- 数据块高速缓冲区：储存以前从数据文件中取出过的数据块的拷贝信息.
+
+  - 由DB_BLOCK_SIZE决定大小.
+  - 通过LRU算法进行管理
+  - 独立的子缓存组成
+  - 数据库缓冲区可以动态的改变尺寸
+
+
+
+- 重做日志缓冲区：记录数据块的所有变化.  
+
+  - 首要目的是恢复.
+  - 记录的信息可用来重做改变
+
+  - 尺寸大小由LOG_BUFFER定义
+
+
+
+- 大型池：可选择的存贮区域,只配置在共享服务器环境中.
+  - 大小由 LARGE_POOL_SIZE决定
+- JAVA区：解开Java命令，尺寸由JAVA_POOL_SIZE 参数决定
+
+
+
+- 系统全局区分配大小上限由SGA_MAX_SIZE参数决定</code></pre><ul>
+<li><strong>程序全局区PGA</strong>：服务器进程启动时分配，每个用户进程连接Oracle数据库分配的区域</li>
+</ul>
+<ul>
 <li>进程结构<ul>
 <li>用户进程：要求 Oracle 服务器交互的一种进程</li>
 <li>服务器进程：直接和 Oracle 服务器交互的一段程序</li>
@@ -407,27 +456,39 @@
 <li>三种文件类型：数据文件、控制文件、重做日志文件</li>
 <li>物理结构由实际操作系统文件决定</li>
 </ul>
-<p>4.逻辑结构—描述了数据库的物理空间怎样运用</p>
-<ul>
-<li><p>RAC方式</p>
+<p>4.逻辑结构—描述了数据库的物理空间怎样运用，包括表空间、段、片区和块</p>
+<p>5.RAC方式：两个数据库进程同时工作</p>
 <p><img src="/2019/11/04/大型数据库/RAC%E6%96%B9%E5%BC%8F.png" alt="RAC方式"></p>
 <ul>
 <li>优点：良好的可伸缩性、高可用性、先进的Cache Fusion技术、降低硬件成本、切换时间短</li>
 <li>缺点：管理复杂、对网络有较高要求 </li>
 </ul>
-</li>
-<li><p>HOTSTANDBY(双机热备)方式</p>
+<p>6.HOTSTANDBY(双机热备)方式：一次只工作一个进程</p>
 <p><img src="/2019/11/04/大型数据库/HOTSTANDBY(%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87)%E6%96%B9%E5%BC%8F.png" alt="HOTSTANDBY(双机热备)方式"></p>
 <ul>
 <li>优点：管理较为简单、运行较为稳定</li>
 <li>缺点：切换时间较长；在系统切换的过程中，客户端与服务器之间的数据库连接会中断，需重新连接；备用机闲置，不能实现负载均衡</li>
 </ul>
-</li>
+<p><strong><em>问题：</em></strong></p>
+<ul>
+<li><strong><em>解释数据库文件 : 数据文件、控制文件、联机重做日志.</em></strong></li>
+<li><strong><em>解释系统全局区内存结构: 数据块高速缓冲区、共享池、重做日志缓冲区.</em></strong></li>
+<li><strong><em>解释主要的后台进程: DBWn, LGWR, CKPT, PMON, SMON, 和 ARCn</em></strong></li>
+<li><strong><em>双机模式：RAC/HOT STANDBY</em></strong></li>
 </ul>
 <p>3.管理表空间和数据文件</p>
 <ul>
-<li>系统表空间：</li>
-<li>非系统表空间</li>
+<li>系统表空间：<ul>
+<li>随着数据库创建被创建</li>
+<li>包含数据字典信息</li>
+<li>包含系统回滚段</li>
+</ul>
+</li>
+<li>非系统表空间<ul>
+<li>不同的segments分开存放（如：回滚段, 临时段, 应用数据 ）</li>
+<li>控制分配给用户对象的空间容量</li>
+</ul>
+</li>
 <li>本地管理的表空间</li>
 <li>字典管理的表空间</li>
 <li>回滚段表空间</li>
@@ -439,10 +500,19 @@
 <li>移动数据文件</li>
 <li>获取表空间信息</li>
 </ul>
+<ul>
+<li><strong><em>怎样使用表空间分开存放数据</em></strong></li>
+<li><strong><em>改变表空间大小:</em></strong></li>
+<li><strong><em>增加数据文件</em></strong></li>
+<li><strong><em>扩展数据文件</em></strong></li>
+<li><strong><em>使用本地管理表空间</em></strong></li>
+<li><strong><em>使用临时表空间</em></strong></li>
+</ul>
 <p>4.管理重做日志文件</p>
 <ul>
-<li>在线重做日志</li>
-<li>归档重做日志</li>
+<li>在线重做日志：Oracle以SQL脚本的形式实时记录数据库的数据更新</li>
+<li>归档重做日志：当条件满足时，Oracle将在线重做日志以文件形式保存到硬盘（持久化）</li>
+<li>重做日志的简单原理：在数据更新操作commit前，将更改的SQL脚本写入重做日志。主要用于数据库的增量备份和增量恢复</li>
 <li>使用重做日志文件</li>
 <li>重做日志文件的结构</li>
 <li>怎样工作</li>
@@ -455,6 +525,12 @@
 <li>获取日志组及其成员信息</li>
 <li>归档日志文件</li>
 </ul>
+<ul>
+<li><strong><em>在线重做日志文件的作用</em></strong></li>
+<li><strong><em>怎样获取在线重做日志文件信息</em></strong></li>
+<li><strong><em>控制日志切换和检查点执行</em></strong></li>
+<li><strong><em>多路复用管理多个在线重做日志文件</em></strong></li>
+</ul>
 <p>5.管理用户和权限</p>
 <ul>
 <li><p>创建用户</p>
@@ -465,14 +541,48 @@
 </li>
 <li><p>系统权限</p>
 <ul>
-<li>授予系统权限</li>
-<li>回收系统权限</li>
+<li>授予系统权限：GRANT 命令</li>
+<li>回收系统权限：REVOKE 命令</li>
 <li>授予对象权限</li>
 <li>回收对象权限</li>
 <li>获取权限信息</li>
 </ul>
 </li>
 </ul>
+<ul>
+<li><strong><em>创建用户时指定适当的口令机制</em></strong> </li>
+<li><strong><em>控制用户对空间的使用</em></strong></li>
+<li><strong><em>控制系统和对象权限</em></strong> </li>
+</ul>
+<blockquote>
+<p>PL/SQL</p>
+</blockquote>
+<p>1.PL/SQL的基本数据类型<br>    BINARY_INTEGER<br>    NUMBER[(precision,scale)]<br>    CHAR[(maximum_length)]<br>    LONG<br>    LONG RAW<br>    VARCHAR2(maximum_length)<br>    DATE<br>    BOOLEAN</p>
+<p>2.声明变量的语法：<br>变量名  类型〔constant〕[not null] [:=value];    </p>
+<p>3.PL/SQL的复合数据类型</p>
+<ul>
+<li><p>复合数据类型：主要是记录数据类型和记录表类型</p>
+</li>
+<li><p>集合数据类型：主要是按索引组织表类型、嵌套表类型和数组类型。</p>
+<ul>
+<li>按索引组织的表:它是一种可以处理多行数据但是只能处理一个字段的变量</li>
+<li>嵌套表</li>
+<li>可变数组</li>
+</ul>
+</li>
+<li><p>复合变量包含多种数据类型，而集合则包含相同数据类型的多个值</p>
+</li>
+</ul>
+<p>4.记录数据类型：一行数据通常包括许多不同的字段</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Type   record_type  is   record(</span><br><span class="line">               field1  type1 [not null]:=expr1;</span><br><span class="line">               field2  type2  [not null] :=expr2;</span><br><span class="line">               …</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用%TYPE属性 :保证定义的变量的数据类型和长度与数据库表中的列保持一致</p>
+</li>
+<li><p>使用%ROWTYPE属性:表名％rowtype(返回和数据表一样类型的记录行)</p>
+</li>
+</ul>
+<p>5.绑定变量（主机变量）</p>
 
       
     </div>
