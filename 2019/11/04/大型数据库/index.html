@@ -90,7 +90,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/11/04/大型数据库/RAC%E6%96%B9%E5%BC%8F.png">
 <meta property="og:image" content="http://yoursite.com/2019/11/04/大型数据库/HOTSTANDBY(%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87)%E6%96%B9%E5%BC%8F.png">
-<meta property="og:updated_time" content="2019-12-28T06:12:34.951Z">
+<meta property="og:updated_time" content="2019-12-30T05:21:35.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大型数据库">
 <meta name="twitter:description" content="2019.11.04 一、案例一：服务器越来越多导致数据冗余 1.解决办法：用户分组—将不同用户的数据分布到不同的服务器上存储，每个用户分配一个组标记 2.注意  数据库组内不要使用自增ID，以便于以后在数据库组之间迁移用户，以实现更合理的I/O，磁盘空间及负载分布。 将userid，postid存储在全局服务器上，可以使用自增，数据库组中的相应值必须以全局服务器上的值为准。 在数据库组之间迁移用">
@@ -583,6 +583,137 @@
 </li>
 </ul>
 <p>5.绑定变量（主机变量）</p>
+<p>\1. 数据库基础</p>
+<p>（1）oralce服务器的体系结构以及主要构件</p>
+<p>数据库：数据集合体，三种文件</p>
+<p>实例：内存结构和进程结构</p>
+<p>（2）双机模式</p>
+<p>\2. 常见的SQL、NoSQL数据库</p>
+<p>（1）NoSQL：2004 BigTable (Google)  2007 Dynamo (Amazon)  2008 Cassandra (Facebook)</p>
+<p>（2）SQL：1969 CODASYL  1970 Codd  1974 SEQUEL  1979 Oracle  1980 Gray  1981 Bernstein and Goodman  1989 SQL-89   1992 SQL-92  1995 Bernstein et al  1999 SQL:1999  2003 SQL:2003</p>
+<p>\3. SQL、NoSQL优缺点</p>
+<p>（1）SQL优缺点：</p>
+<p>优势：</p>
+<p>保持数据的一致性（事务处理）</p>
+<p>由于以标准化为前提，数据更新的开销很小（相同的字段基本上都只有一处）</p>
+<p>可以进行Join等复杂查询</p>
+<p>其中能够保持数据的一致性是关系型数据库的最大优势。</p>
+<p>不足：</p>
+<p>大量数据的写入处理</p>
+<p>为有数据更新的表做索引或表结构（schema）变更</p>
+<p>字段不固定时应用</p>
+<p>对简单查询需要快速返回结果的处理</p>
+<p>（2）NoSQL优缺点：</p>
+<p>No need to normalize data</p>
+<p>Cheap, fast, scalable</p>
+<p>Simple programming (for geeks)</p>
+<p>Issues</p>
+<p>No guidance from schema</p>
+<p>No model for historic data</p>
+<p>\4. 数据库性能决定因素，如何优化1-1</p>
+<p>（1）决定因素</p>
+<p>（2）优化：应用层面的优化，数据库设计与配置优化，操作系统和硬件优化，架构的优化</p>
+<p>\5. 架构演化，如何拆分</p>
+<p>\6. 架构内容</p>
+<p>\7. 什么事oracle实例：</p>
+<p>（1）是一种访问 Oracle 数据库的基本方式</p>
+<p>（2）总是打开一个且只打开一个数据库</p>
+<p>（3）由内存结构和进程结构组成</p>
+<p>\8. Oracle由哪三种文件类型组成</p>
+<p>（1）控制文件</p>
+<p>（2）数据文件</p>
+<p>（3）重做日志文件</p>
+<p>\9. oracle进程</p>
+<p>（1）用户进程 : 当数据库用户要求连接到 Oracle 服务器时开始启动.</p>
+<p>（2）服务器进程 : 连接 Oracle 实例,当用户建立一个会话时开始启动. </p>
+<p>（3）后台进程 : Oracle 实例启动即可用.</p>
+<p>\10. RAC方式的优缺点</p>
+<p>（1）优点：良好的可伸缩性；高可用性；先进的Cache Fusion技术；降低硬件成本；切换时间短</p>
+<p>（2）缺点：管理复杂 ；对网络有较高要求 </p>
+<p>双机热备方式的优缺点</p>
+<p>（1）优点：管理较为简单；运行较为稳定</p>
+<p>（2）缺点：切换时间较长 ；在系统切换的过程中，客户端与服务器之间的数据库连接会中断，需重新连接；备用机闲置，不能实现负载均衡</p>
+<p>\11. 表空间的概念  1-2最后</p>
+<p>（1）几种表空间的创建代码</p>
+<p>（2）删除表空间</p>
+<p>（3）改变表空间大小</p>
+<p>（4）移动数据文件</p>
+<p>（5）获取表空间信息</p>
+<p>\12. 两种日志文件  1-2</p>
+<p>（1）在线重做日志（联机重做日志）：Oracle以SQL脚本的形式实时记录数据库的数据更新</p>
+<p>（2）归档重做日志（归档日志）：当条件满足时，Oracle将在线重做日志以文件形式保存到硬盘（持久化）</p>
+<p>（3）重做日志直接对应于硬盘的重做日志文件</p>
+<p>（4）以组（Group）（至少两组）的形式组织，一个重做日志组包含一个或者多个日志文件（组成员）</p>
+<p>（5）简单原理：在数据更新操作commit前，将更改的SQL脚本写入重做日志。主要用于数据库的增量备份和增量恢复</p>
+<p>（6）日志切换命令：ALTER SYSTEM SWITCH LOGFILE.</p>
+<p>（7）检查点执行：设置 FAST_START_MTTR_TARGET 参数</p>
+<p>​         或者  ALTER SYSTEM CHECKPOINT</p>
+<p>（8）增加在线重做日志组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ALTER DATABASE ADD LOGFILE GROUP 3 (&apos;$HOME/ORADATA/u01/log3a.rdo&apos;,</span><br><span class="line"></span><br><span class="line"> &apos;$HOME/ORADATA/u02/log3b.rdo&apos;)</span><br><span class="line"></span><br><span class="line">SIZE 1M;</span><br></pre></td></tr></table></figure>
+
+<p> （9）</p>
+<p>\13. 监听工具lsnrctl：一些命令  lsnrctl <command name></p>
+<p>\14. 阿里云</p>
+<p>\15. PL/SQL优点</p>
+<p>（1） PL/SQL是ORACLE在标准SQL语言上的过程性扩张，允许嵌入SQL语句，允许定义常量和变量，允许过程语言结果，允许使用异常处理ORACLE错误。</p>
+<p>（2）PL/SQL能提高程序的运行性能，将PL/SQL块内嵌到应用程序中，最大优点可以降低网络开销，提高应用程序的性能。</p>
+<p>（3）PL/SQL提供模块化的程序设计功能，简化应用程序的开发和维护工作，可以将企业规则和商业逻辑集成到PL/SQL程序中,包括存储过程，函数，包中，然后在应用程序中调用相应的功能。</p>
+<p>（4）具有过程语言控制机构，PL/SQL允许使用条件分支语句和循环语句。</p>
+<p>（5）具有良好的兼容性，ORACLE运行的任何平台都可以使用PL/SQL块。</p>
+<p>\16. PL/SQL程序写法</p>
+<p>\17. 记录数据类型</p>
+<p>\18. %TYPE和％ROWTYPE </p>
+<p>（1）%type用于变量类型的声明中。也可以用于保证定义的变量的数据类型和长度与数据库表中的列保持一致</p>
+<p>（2）定义记录类型为  表名％rowtype，则返回和数据表一样类型的记录行</p>
+<p>\19. PL/SQL控制结构：条件结构、循环结构和顺序结构</p>
+<p>（1）条件结构 ：</p>
+<p>​    if condition then<br>​     statement1<br> else<br>​    statement2<br>end if ; </p>
+<p>（2）循环结构 ：</p>
+<p>a: loop … end loop; </p>
+<p>b. while condition loop … end loop; </p>
+<p>c. for variable in low_bound . . upper_bound  loop … end loop; </p>
+<p>其中的“…”代表循环体</p>
+<p>（3）顺序结构：实际就是goto的运用</p>
+<p>\20. 语句的限制</p>
+<p>（1）对于goto的限制：对于块、循环、if语句，不能从外层转到内层</p>
+<p>（2）使用goto语句从一个if语句块转到另一个子句也是非法的</p>
+<p>（3）从一个异常处理块的内部跳到当前执行块是非法的</p>
+<p>\21. 定义异常与异常处理</p>
+<p>（1）定义：</p>
+<p>Declare </p>
+<p>e_toomanystudents exception;</p>
+<p>（2）处理：</p>
+<p>Exception</p>
+<p>  when exception_name then</p>
+<p>​    处理错误语句序列</p>
+<p>  when exception_name then</p>
+<p>​    处理错误语句序列</p>
+<p>  when others then</p>
+<p>​    处理错误语句序列</p>
+<p>  end;</p>
+<p>\22. 过程处理</p>
+<p>\23. 触发器</p>
+<p>\24. 分布式数据库的特点和缺点</p>
+<p>\25. 水平拓展和垂直拓展有哪些优势</p>
+<p>\26. 优化，查询条件优化</p>
+<p>\27. OceanBase</p>
+<p>\28. Oracle索引，常见的索引</p>
+<p>\29. 创建索引的规则与注意</p>
+<p>（1）一般来说，不需要为比较小的表创建索引；</p>
+<p>（2）即使是大表，如果经常需要查询的数据不超过10%到15%的话，那就没有必要为其建立索引的必要</p>
+<p>（3）如对于一些重复内容比较少的列，特别是对于那些定义了唯一约束的列。在这些列上建立索引，往往可以起到非常不错的效果。</p>
+<p>（4）数据库管理员，需要隔一段时间，如一年，对数据库的索引进行优化。</p>
+<p>（5）通常来说，表的索引越多，其查询的速度也就越快。但是，表的更新速度则会降低。</p>
+<p>（6）对于一些数据仓库或者决策型数据库系统，其主要用来进行查询。</p>
+<p>（7）关于位图索引。</p>
+<p>基本规则：太多了</p>
+<p>（1）选择索引字段的原则:</p>
+<p>（2）复合索引的优点:</p>
+<p>（3）复合索引字段排序的原则:</p>
+<p>（4）建立索引常用的规则如下</p>
+<p>\30. Oracle数据库的两个组件</p>
+<p>（1）</p>
+<p>\31. 实验二后面几个考题会考</p>
 
       
     </div>
